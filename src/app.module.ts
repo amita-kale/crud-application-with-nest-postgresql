@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { FeedModule } from './feed/services/feed.module';
 import { FlightMModule } from './flight-m/flight-m.module';
 import { StudentModule } from './student/student.module';
 
@@ -20,8 +21,6 @@ import { StudentModule } from './student/student.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+    FeedModule,
 })
 export class AppModule {}

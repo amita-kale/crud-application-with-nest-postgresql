@@ -16,12 +16,16 @@ export class FeedService {
         return from(this.feedPostRepository.save(feedPost));
     }
 
+    findById(id:number):Observable<FeedPost>{
+        return from(this.feedPostRepository.findOneBy({id}));
+    }
+
     findAllPosts(): Observable<FeedPost[]>{
-        return from(this.feedPostRepository.find())
+        return from(this.feedPostRepository.find());
     }
 
     updatePost(id: number, feedPost: FeedPost):Observable<UpdateResult>{
-        return from(this.feedPostRepository.update(id,feedPost))
+        return from(this.feedPostRepository.update(id,feedPost));
     }
 
     deletePost(id: number): Observable<DeleteResult>{

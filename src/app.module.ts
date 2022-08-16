@@ -22,5 +22,9 @@ import { StudentModule } from './student/student.module';
       synchronize: true,
     }),
     FeedModule,
+    
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

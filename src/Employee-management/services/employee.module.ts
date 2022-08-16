@@ -1,8 +1,8 @@
 import { Controller, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { FeedController } from '../controllers/feed.controller';
+import { FeedController } from '../controllers/employee.controller';
 import { FeedPostEntity } from '../models/post.entity';
-import { FeedService } from './feed.service';
+import { FeedService } from './employee.service';
 
 @Module({
   imports:[TypeOrmModule.forFeature([FeedPostEntity])],

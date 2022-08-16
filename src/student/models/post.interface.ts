@@ -1,5 +1,5 @@
 export interface StudentPost {
-    student_id?: number;
+    id?: number;
     full_name?: string;
     email?: string;
     contact?: number;

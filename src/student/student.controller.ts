@@ -29,6 +29,9 @@ from './student.service';
     @Get() findAll():Observable<StudentPost[] > {
         return this.studentService.findAllPosts();
     }
+    @Get(':id') findSpecific(@Param('id') id:number):Observable<StudentPost > {
+        return this.studentService.findSpecificStudent(id);
+    }
 
     @Put(':id') update(@Param('id') id:number, @Body() studentPost: StudentPost):Observable<UpdateResult > {
         return this.studentService.updatePutPost(id,studentPost)

@@ -7,7 +7,7 @@ import {
 }
 from '@nestjs/typeorm';
 import {
-    from, Observable
+    from, identity, Observable
 }
 from 'rxjs';
 import {
@@ -33,8 +33,10 @@ from './models/post.interface';
     findAllPosts():Observable<StudentPost[] > {
         return from(this.studentPostRepository.find());
     }
+
     findSpecificStudent(id:number):Observable<StudentPost > {
-        return from(this.studentPostRepository.findOneBy({id}))
+        const student_id=id;
+        return from(this.studentPostRepository.findOneBy({student_id}))
     }
 
     updatePutPost(id: number, studentPost: StudentPost):Observable<UpdateResult > {
@@ -44,6 +46,7 @@ from './models/post.interface';
     updatePatchPost(id: number, studentPost: StudentPost):Observable<UpdateResult > {
         return from(this.studentPostRepository.update(id, studentPost));
     }
+
 
     deletePost(id: number):Observable<DeleteResult > {
         return from(this.studentPostRepository.delete(id));

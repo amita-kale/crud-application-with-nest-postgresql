@@ -37,9 +37,10 @@ from './student.service';
         return this.studentService.updatePutPost(id,studentPost)
     }
 
-    @Patch(':id') updatePatch(@Param('id') id:number, @Body() feedPost: StudentPost):Observable<UpdateResult > {
-        return this.studentService.updatePatchPost(id,feedPost)
+    @Patch(':id') updatePatch(@Param('id') id:number, @Body() studentPost: StudentPost):Observable<UpdateResult > {
+        return this.studentService.updatePatchPost(id,studentPost)
     }
+
 
     @Delete(':id') delete(@Param('id') id : number):Observable<DeleteResult > {
         return this.studentService.deletePost(id);

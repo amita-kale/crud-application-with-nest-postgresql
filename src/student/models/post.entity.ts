@@ -4,7 +4,7 @@ import {
 from "typeorm";
 
 @Entity('student_ post') export class StudentPostEntity {
-    @PrimaryGeneratedColumn() id: number;
+    @PrimaryGeneratedColumn() student_id: number;
 
     @Column() full_name: string;
 

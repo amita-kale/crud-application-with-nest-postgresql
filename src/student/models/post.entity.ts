@@ -14,4 +14,7 @@ from "typeorm";
     @Column() contact: number;
 
     @Column() address: string;
+    @Column() student_profile: string;
+
+
 }

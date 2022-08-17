@@ -29,14 +29,18 @@ from './student.service';
     @Get() findAll():Observable<StudentPost[] > {
         return this.studentService.findAllPosts();
     }
+    @Get(':id') findSpecific(@Param('id') id:number):Observable<StudentPost > {
+        return this.studentService.findSpecificStudent(id);
+    }
 
     @Put(':id') update(@Param('id') id:number, @Body() studentPost: StudentPost):Observable<UpdateResult > {
         return this.studentService.updatePutPost(id,studentPost)
     }
 
-    @Patch(':id') updatePatch(@Param('id') id:number, @Body() feedPost: StudentPost):Observable<UpdateResult > {
-        return this.studentService.updatePatchPost(id,feedPost)
+    @Patch(':id') updatePatch(@Param('id') id:number, @Body() studentPost: StudentPost):Observable<UpdateResult > {
+        return this.studentService.updatePatchPost(id,studentPost)
     }
+
 
     @Delete(':id') delete(@Param('id') id : number):Observable<DeleteResult > {
         return this.studentService.deletePost(id);

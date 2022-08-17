@@ -7,7 +7,7 @@ import {
 }
 from '@nestjs/typeorm';
 import {
-    from, Observable
+    from, identity, Observable
 }
 from 'rxjs';
 import {
@@ -24,25 +24,31 @@ import {
 from './models/post.interface';
 
 @Injectable() export class StudentService {
-    constructor(@InjectRepository(StudentPostEntity) private readonly feedPostRepository: Repository<StudentPostEntity > ) {}
+    constructor(@InjectRepository(StudentPostEntity) private readonly studentPostRepository: Repository<StudentPostEntity > ) {}
 
     createPost(studentPost: StudentPost):Observable<StudentPost > {
-        return from(this.feedPostRepository.save(studentPost));
+        return from(this.studentPostRepository.save(studentPost));
     }
 
     findAllPosts():Observable<StudentPost[] > {
-        return from(this.feedPostRepository.find());
+        return from(this.studentPostRepository.find());
+    }
+
+    findSpecificStudent(id:number):Observable<StudentPost > {
+        const student_id=id;
+        return from(this.studentPostRepository.findOneBy({student_id}))
     }
 
     updatePutPost(id: number, studentPost: StudentPost):Observable<UpdateResult > {
-        return from(this.feedPostRepository.update(id, studentPost));
+        return from(this.studentPostRepository.update(id, studentPost));
     }
 
     updatePatchPost(id: number, studentPost: StudentPost):Observable<UpdateResult > {
-        return from(this.feedPostRepository.update(id, studentPost));
+        return from(this.studentPostRepository.update(id, studentPost));
     }
 
+
     deletePost(id: number):Observable<DeleteResult > {
-        return from(this.feedPostRepository.delete(id));
+        return from(this.studentPostRepository.delete(id));
     }
 }

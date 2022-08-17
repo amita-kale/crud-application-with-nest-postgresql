@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FeedModule } from './feed/services/feed.module';
+import { FeedModule } from './Employee-management/services/employee.module';
 import { FlightMModule } from './flight-m/flight-m.module';
 import { StudentModule } from './student/student.module';
 

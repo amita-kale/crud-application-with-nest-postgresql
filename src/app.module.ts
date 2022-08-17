@@ -7,6 +7,7 @@ import { FeedModule } from './Employee-management/services/employee.module';
 import { FlightMModule } from './flight-m/flight-m.module';
 import { ProductModule } from './product/product.module';
 import { StudentModule } from './student/student.module';
+import { UsersModule } from './usermodule/users.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { StudentModule } from './student/student.module';
     }),
     FeedModule,
     ProductModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,10 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { BookService } from './book.service';
 import { Book } from './models/book.interface';
-import { FileInterceptor } from '@nestjs/platform-express';
-
 
 @Controller('book')
 export class BookController {
@@ -56,14 +54,4 @@ export class BookController {
     delete(@Param('id') id : number): Observable<DeleteResult>{
         return this.bookService.deleteBook(id);
     }
-
-
-    @Post('/add')
-    @UseInterceptors(FileInterceptor('image'))
-    postAdd(@UploadedFile() profilexyz: Array<Express.Multer.File>): object {
-    console.log(profilexyz);
-    return {
-      message: 'file uploaded',
-    };
-  }
 }

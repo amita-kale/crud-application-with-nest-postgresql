@@ -5,7 +5,7 @@ import { IsNotEmpty, IsString, IsInt} from "class-validator";
 
 @Entity('book_detail')
 export class BookEntity {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn()
     @IsInt()
     book_id: number;
 

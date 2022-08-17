@@ -1,4 +1,4 @@
-import{Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import{Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum department{
     finance="Finance",
@@ -29,7 +29,9 @@ export class FeedPostEntity{
     @Column({ type: 'int' ,default: null })
     salary: number;
 
-    @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
-        createdAt : Date;
+    // @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
+    //     createdAt : Date;
+    @CreateDateColumn()
+    createdAt: Date;
 
 }

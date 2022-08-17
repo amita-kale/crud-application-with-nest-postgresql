@@ -5,11 +5,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FeedModule } from './Employee-management/services/employee.module';
 import { FlightMModule } from './flight-m/flight-m.module';
+import { ProductModule } from './product/product.module';
 import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
-    StudentModule,FlightMModule,
+    StudentModule,
+    FlightMModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -22,7 +24,7 @@ import { StudentModule } from './student/student.module';
       synchronize: true,
     }),
     FeedModule,
-    
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],

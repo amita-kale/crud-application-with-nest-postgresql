@@ -24,5 +24,3 @@ export class FlightM {
   @CreateDateColumn({ nullable: true })
   updatedAt: Date;
 }
-
-// tcfvygbhnjkm

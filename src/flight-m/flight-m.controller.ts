@@ -7,10 +7,12 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+
+import { FlightM } from './entities/flight-m.entity';
+
 import { FlightMService } from './flight-m.service';
 import { CreateFlightMDto } from './dto/create-flight-m.dto';
 import { UpdateFlightMDto } from './dto/update-flight-m.dto';
-import { FlightM } from './entities/flight-m.entity';
 
 @Controller('flight-m')
 export class FlightMController {
@@ -43,6 +45,4 @@ export class FlightMController {
   remove(@Param('ticket') ticket: number) {
     return this.flightMService.remove(+ticket);
   }
-
-  
 }

@@ -29,7 +29,9 @@ export class FlightMService {
 
   update(ticket: number, UpdateFlightMDto: UpdateFlightMDto) {
     let fli: FlightM = new FlightM();
+
     fli.ticket = ticket;
+
     fli.passenger = UpdateFlightMDto.passenger;
     fli.Destination = UpdateFlightMDto.Destination;
     return this.flightRepository.save(fli);

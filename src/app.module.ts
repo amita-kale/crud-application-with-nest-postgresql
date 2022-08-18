@@ -1,9 +1,13 @@
+// @Module({ imports: [StudentModule, ConfigModule.forRoot({ isGlobal: true }), TypeOrmModule.forRoot({ type: 'postgres', host: process.env.DB_HOST, port: parseInt(<string > process.env.DB_PORT), username: process.env.DB_USERNAME, password: process.env.DB_PASSWORD, database: process.env.DB_DATABASE, autoLoadEntities: true, synchronize: true, }), FeedModule, ProductModule, UsersModule, ], controllers: [AppController], providers: [AppService], }) export class AppModule {}
+
+// FlightMModule, BookModule,
+
 import {
     Module
 }
 from '@nestjs/common';
 import {
-    ConfigModule, ConfigService
+    ConfigModule
 }
 from '@nestjs/config';
 import {
@@ -18,12 +22,18 @@ import {
     AppService
 }
 from './app.service';
-
+// import {
+//     BookModule
+// }
+// from './book/book.module';
 import {
     FeedModule
 }
 from './Employee-management/services/employee.module';
-
+// import {
+//     FlightMModule
+// }
+// from './flight-m/flight-m.module';
 import {
     ProductModule
 }
@@ -38,5 +48,4 @@ import {
 from './usermodule/users.module';
 
 @Module({ imports: [StudentModule, ConfigModule.forRoot({ isGlobal: true }), TypeOrmModule.forRoot({ type: 'postgres', host: process.env.DB_HOST, port: parseInt(<string > process.env.DB_PORT), username: process.env.DB_USERNAME, password: process.env.DB_PASSWORD, database: process.env.DB_DATABASE, autoLoadEntities: true, synchronize: true, }), FeedModule, ProductModule, UsersModule, ], controllers: [AppController], providers: [AppService], }) export class AppModule {}
-
 // FlightMModule, BookModule,

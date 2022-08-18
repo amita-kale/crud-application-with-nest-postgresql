@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FlightMService } from './flight-m.service';
 import { CreateFlightMDto } from './dto/create-flight-m.dto';
 import { UpdateFlightMDto } from './dto/update-flight-m.dto';
+import { FlightM } from './entities/flight-m.entity';
 
 @Controller('flight-m')
 export class FlightMController {
@@ -18,17 +27,22 @@ export class FlightMController {
   }
 
   @Get(':ticket')
-  findOne(@Param('ticket') ticket: String) {
+  findOne(@Param('ticket') ticket: number) {
     return this.flightMService.findOne(+ticket);
   }
 
   @Patch(':ticket')
-  update(@Param('ticket') ticket: string, @Body() updateFlightMDto: UpdateFlightMDto) {
+  update(
+    @Param('ticket') ticket: number,
+    @Body() updateFlightMDto: UpdateFlightMDto,
+  ) {
     return this.flightMService.update(+ticket, updateFlightMDto);
   }
 
   @Delete(':ticket')
-  remove(@Param('ticket') ticket: string) {
+  remove(@Param('ticket') ticket: number) {
     return this.flightMService.remove(+ticket);
   }
+
+  
 }

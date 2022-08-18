@@ -12,11 +12,11 @@ export class FlightM {
   ticket: number;
   @Column()
   @IsString()
-  @IsNotEmpty()
+  // @IsNotEmpty()
   passenger: String;
   @Column()
   @IsString()
-  @IsNotEmpty()
+  // @IsNotEmpty()
   Destination: String;
 
   @CreateDateColumn({ nullable: true })

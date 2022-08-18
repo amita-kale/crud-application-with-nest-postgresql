@@ -22,29 +22,36 @@ import {
     StudentPost
 }
 from './models/post.interface';
+import {
+    ValidateStudentModel
+}
+from './models/post.model';
 
 @Injectable() export class StudentService {
     constructor(@InjectRepository(StudentPostEntity) private readonly studentPostRepository: Repository<StudentPostEntity > ) {}
 
-    createPost(studentPost: StudentPost):Observable<StudentPost > {
-        return from(this.studentPostRepository.save(studentPost));
-    }
+    // createPost(studentPost: StudentPost):Observable<StudentPost > {
+    //     return from(this.studentPostRepository.save(studentPost));
+    // }
+    createPost(validateStudentModel: ValidateStudentModel):Observable<StudentPost > {
+        return from(this.studentPostRepository.save(validateStudentModel));
+    };
 
     findAllPosts():Observable<StudentPost[] > {
         return from(this.studentPostRepository.find());
-    }
+    };
 
     findSpecificStudent(id:number):Observable<StudentPost > {
         const student_id=id;
         return from(this.studentPostRepository.findOneBy({student_id}))
     }
 
-    updatePutPost(id: number, studentPost: StudentPost):Observable<UpdateResult > {
-        return from(this.studentPostRepository.update(id, studentPost));
+    updatePutPost(id: number, validateStudentModel: ValidateStudentModel):Observable<UpdateResult > {
+        return from(this.studentPostRepository.update(id, validateStudentModel));
     }
 
-    updatePatchPost(id: number, studentPost: StudentPost):Observable<UpdateResult > {
-        return from(this.studentPostRepository.update(id, studentPost));
+    updatePatchPost(id: number, validateStudentModel: ValidateStudentModel):Observable<UpdateResult > {
+        return from(this.studentPostRepository.update(id, validateStudentModel));
     }
 
 

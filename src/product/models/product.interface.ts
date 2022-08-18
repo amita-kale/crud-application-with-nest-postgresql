@@ -1,5 +1,5 @@
 export interface ProductPost{
-    id?:number;
+    id?:string;
     productName?:string;
     price?:number;
     // stock?:stri;

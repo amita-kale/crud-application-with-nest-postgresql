@@ -1,3 +1,4 @@
+
 import { ValidationPipe } from '@nestjs/common';
 import {
     NestFactory
@@ -23,5 +24,14 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
     //app.setGlobalPrefix('api');
     await app.listen(3000);
+
+// import { NestFactory } from '@nestjs/core';
+// import { AppModule } from './app.module';
+
+// async function bootstrap() {
+//   const app = await NestFactory.create(AppModule);
+//   app.setGlobalPrefix('emp');
+//   await app.listen(3000);
+// >>>>>>> 5251b3b56fae08c03c888fdb9c17afbc464a3112
 }
 bootstrap();

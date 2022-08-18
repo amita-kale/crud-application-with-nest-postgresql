@@ -30,9 +30,7 @@ from './models/post.model';
 @Injectable() export class StudentService {
     constructor(@InjectRepository(StudentPostEntity) private readonly studentPostRepository: Repository<StudentPostEntity > ) {}
 
-    // createPost(studentPost: StudentPost):Observable<StudentPost > {
-    //     return from(this.studentPostRepository.save(studentPost));
-    // }
+
     createPost(validateStudentModel: ValidateStudentModel):Observable<StudentPost > {
         return from(this.studentPostRepository.save(validateStudentModel));
     };

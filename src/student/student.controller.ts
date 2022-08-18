@@ -27,15 +27,6 @@ from './student.service';
 @Controller('student') export class StudentController {
     constructor(private studentService: StudentService) {}
 
-    // @Post() create(@Body() studentPost: StudentPost):Observable<StudentPost > {
-    //     return this.studentService.createPost(studentPost);
-    // }
-
-    // @Get() findAll():Observable<StudentPost[] > {
-    //     return this.studentService.findAllPosts();
-    // }
-
-    // updated code
 
     @Post() create(@Body() validateStudentModel: ValidateStudentModel):Observable<StudentPost > {
         return this.studentService.createPost(validateStudentModel);

@@ -1,5 +1,10 @@
+import { IsInt, IsString } from 'class-validator';
+
 export class CreateFlightMDto {
-    ticket:Number;
-    passenger:String;
-    Destination:String;
+  @IsInt()
+  ticket: number;
+  @IsString()
+  passenger: String;
+  @IsString()
+  Destination: String;
 }

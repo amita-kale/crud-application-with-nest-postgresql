@@ -1,5 +1,5 @@
-export class UpdateFlightMDto  {
-    ticket:Number;
-    passenger:String;
-    Destination
+export class UpdateFlightMDto {
+  ticket: number;
+  passenger: String;
+  Destination: String;
 }

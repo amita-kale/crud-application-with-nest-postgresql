@@ -1,15 +1,7 @@
 
-import { ValidationPipe } from '@nestjs/common';
-import {
-    NestFactory
-}
-from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import {
-    AppModule
-}
-from './app.module';
-
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.useGlobalPipes(new ValidationPipe({
@@ -23,20 +15,9 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('cats')
     .build();
-    
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  app.useGlobalPipes(new ValidationPipe());
-    //app.setGlobalPrefix('api');
-    await app.listen(3000);
+  await app.listen(3000);
 
-// import { NestFactory } from '@nestjs/core';
-// import { AppModule } from './app.module';
-
-// async function bootstrap() {
-//   const app = await NestFactory.create(AppModule);
-//   app.setGlobalPrefix('emp');
-//   await app.listen(3000);
-// >>>>>>> 5251b3b56fae08c03c888fdb9c17afbc464a3112
 }
 bootstrap();

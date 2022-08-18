@@ -2,13 +2,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe({
+    disableErrorMessages:true,
+    whitelist:true,
+    forbidNonWhitelisted:true,
+  }))
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('swagger example')
+    .setDescription('The swagger API description')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('swagger')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

@@ -10,6 +10,7 @@ export class CreateUserModel{
     @IsNotEmpty()
     @IsInt()
     price:number;
+   
 
     @IsNotEmpty()
     @IsEnum(ProductData)

@@ -1,12 +1,9 @@
-export interface FeedPost {
+export interface EmpPost {
     id? : number;
-    
-    //image?: ImageBitmap;
     EmployeeName?: string;
     EmployeeAddress?: string;
-   //
+    Image?: string;
     contact?: number;
     salary?: number;
-    
     createdAt? : Date;
 }

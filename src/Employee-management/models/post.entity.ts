@@ -9,7 +9,7 @@ export enum department{
 
 
 @Entity('employee')
-export class FeedPostEntity{
+export class EmpPostEntity{
     @PrimaryGeneratedColumn('uuid')
          id : number;
         
@@ -18,6 +18,9 @@ export class FeedPostEntity{
 
     @Column({ default : '' })
     EmployeeAddress: string;
+
+    @Column({ default: '' })
+    image: string;
 
     
     @Column({ type:'enum', enum:department, default :null })
@@ -29,8 +32,6 @@ export class FeedPostEntity{
     @Column({ type: 'int' ,default: null })
     salary: number;
 
-    // @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
-    //     createdAt : Date;
     @CreateDateColumn()
     createdAt: Date;
 

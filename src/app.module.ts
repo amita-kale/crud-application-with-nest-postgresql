@@ -9,13 +9,14 @@ import { FlightMModule } from './flight-m/flight-m.module';
 import { ProductModule } from './product/product.module';
 import { StudentModule } from './student/student.module';
 import { UsersModule } from './usermodule/users.module';
+import { MulterModule } from '@nestjs/platform-express';
+
 
 @Module({
   imports: [
     StudentModule,
     FlightMModule,
     BookModule,
-
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -27,6 +28,8 @@ import { UsersModule } from './usermodule/users.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    MulterModule.register({ dest:'./images' }),
+
     FeedModule,
     ProductModule,
     UsersModule,
@@ -35,5 +38,3 @@ import { UsersModule } from './usermodule/users.module';
   providers: [AppService],
 })
 export class AppModule {}
-
-

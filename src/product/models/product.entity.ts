@@ -3,33 +3,31 @@ import { timestamp } from 'rxjs';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 //import {v4 as uuidv4} from 'uuid';
 
-export enum ProductData{
-   AVAILABLE= "Available",
-   OUTOFSTOCK="OutOfStock"
+export enum ProductData {
+  AVAILABLE = 'Available',
+  OUTOFSTOCK = 'OutOfStock',
 }
-export enum ProductSize{
-    SMALL="S",
-    MEDIUM="M",
-    LARGE="L",
-    EXTRALARGE="XL"
+export enum ProductSize {
+  SMALL = 'S',
+  MEDIUM = 'M',
+  LARGE = 'L',
+  EXTRALARGE = 'XL',
 }
 @Entity('product_post')
-
-
 export class ProductPostEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({default:''})
+  @Column({ default: '' })
   productName: string;
 
-  @Column({type:'bigint',default:null})
-  price:number;
+  @Column({ type: 'bigint', default: null })
+  price: number;
 
-  @Column({ type:'enum',enum:ProductData,default:null})
-  stock:ProductData;
+  @Column({ type: 'enum', enum: ProductData, default: null })
+  stock: ProductData;
 
-  @Column({ type:'enum',enum:ProductSize,default:null})
+  @Column({ type: 'enum', enum: ProductSize, default: null })
   size: ProductSize;
 
   @Column({ default: '' })

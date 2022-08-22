@@ -1,21 +1,21 @@
-import {Module} from '@nestjs/common';
-import {ConfigModule} from '@nestjs/config';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
-import { FeedModule } from './Employee-management/services/employee.module';
+import { EmpModule } from './Employee-management/services/employee.module';
 import { FlightMModule } from './flight-m/flight-m.module';
 import { ProductModule } from './product/product.module';
 import { StudentModule } from './student/student.module';
 import { UsersModule } from './usermodule/users.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
     StudentModule,
     FlightMModule,
     BookModule,
-
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -27,7 +27,9 @@ import { UsersModule } from './usermodule/users.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    FeedModule,
+    MulterModule.register({ dest: './images' }),
+
+    EmpModule,
     ProductModule,
     UsersModule,
   ],
@@ -35,5 +37,3 @@ import { UsersModule } from './usermodule/users.module';
   providers: [AppService],
 })
 export class AppModule {}
-
-

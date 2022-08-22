@@ -1,16 +1,15 @@
-import {Module} from '@nestjs/common';
-import {ConfigModule} from '@nestjs/config';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
-import { FeedModule } from './Employee-management/services/employee.module';
+import { EmpModule } from './Employee-management/services/employee.module';
 import { FlightMModule } from './flight-m/flight-m.module';
 import { ProductModule } from './product/product.module';
 import { StudentModule } from './student/student.module';
 import { UsersModule } from './usermodule/users.module';
 import { MulterModule } from '@nestjs/platform-express';
-
 
 @Module({
   imports: [
@@ -28,9 +27,9 @@ import { MulterModule } from '@nestjs/platform-express';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    MulterModule.register({ dest:'./images' }),
+    MulterModule.register({ dest: './images' }),
 
-    FeedModule,
+    EmpModule,
     ProductModule,
     UsersModule,
   ],

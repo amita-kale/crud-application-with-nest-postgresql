@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import{Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum department{
@@ -11,7 +12,7 @@ export enum department{
 @Entity('employee')
 export class EmpPostEntity{
     @PrimaryGeneratedColumn('uuid')
-         id : number;
+         id : string;
         
     @Column({ default : '' })
     EmployeeName: string;

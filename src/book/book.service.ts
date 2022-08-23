@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, UploadedFile } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';

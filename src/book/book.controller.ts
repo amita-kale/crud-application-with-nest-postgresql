@@ -26,7 +26,7 @@ import { PatchBook } from './models/book.patch';
 @Controller('book')
 export class BookController {
   constructor(private bookService: BookService) {}
-  imagepath: string = '';
+  // imagepath: string = '';
   @Post()
   // @IsNotEmpty()
   add(@Body() bookModel: BookModel): Observable<Book> {
@@ -70,11 +70,11 @@ export class BookController {
     return this.bookService.findAllBooks();
   }
 
-  @Get(':id')
-  // getSpecificStudent(@Param('id') id:number): Book {
-  getSpecificBookId(@Param('id') id: number): Observable<Book> {
-    return this.bookService.getSpecificBookId(id);
-  }
+  // @Get(':id')
+  // // getSpecificStudent(@Param('id') id:number): Book {
+  // getSpecificBookId(@Param('id') id: number): Observable<Book> {
+  //   return this.bookService.getSpecificBookId(id);
+  // }
 
   @Get('bname/:name')
   getSpecificBookName(@Param('name') name: string): Observable<Book> {
@@ -112,7 +112,7 @@ export class BookController {
   //     return this.bookService.updatePatchBook(id,bookModel)
   // }
 
-  @Patch(':id')
+  @Patch('/:id')
   updatePatch(
     @Param('id') id: number,
     @Body() patchBook: PatchBook,
@@ -120,7 +120,7 @@ export class BookController {
     return this.bookService.updatePatchBook(id, patchBook);
   }
 
-  @Delete(':id')
+  @Delete('/:id')
   delete(@Param('id') id: number): Observable<DeleteResult> {
     return this.bookService.deleteBook(id);
   }

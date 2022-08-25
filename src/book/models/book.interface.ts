@@ -5,7 +5,7 @@ export class Book {
   book_name: string;
   author: string;
   price: number;
-  book_image: string;
+  // book_image: string;
   book_isbn: string;
 
   

@@ -1,10 +1,16 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateFlightMDto {
   @IsInt()
+  @IsNotEmpty()
   ticket: number;
   @IsString()
-  passenger: String;
+  @IsNotEmpty()
+  passenger: string;
   @IsString()
-  Destination: String;
+  @IsNotEmpty()
+  Destination: string;
+  // Image: string;
+  // static Image: any;
+  // static Image: any;
 }

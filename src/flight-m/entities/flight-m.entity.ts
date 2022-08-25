@@ -5,22 +5,25 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { IsNotEmpty, IsString, IsInt } from 'class-validator';
-@Entity()
+@Entity('FlightM')
 export class FlightM {
   @PrimaryGeneratedColumn()
   @IsInt()
   ticket: number;
-  @Column()
-  @IsString()
-  @IsNotEmpty()
-  passenger: String;
-  @Column()
-  @IsString()
-  @IsNotEmpty()
-  Destination: String;
 
-  @CreateDateColumn({ nullable: true })
-  createdAt: Date;
-  @CreateDateColumn({ nullable: true })
-  updatedAt: Date;
+  @Column()
+  @IsString()
+  passenger: string;
+
+  @Column()
+  @IsString()
+  Destination: string;
+
+  // @Column()
+  // Image: string;
+
+  // @CreateDateColumn({ nullable: true })
+  // createdAt: Date;
+  // @CreateDateColumn({ nullable: true })
+  // updatedAt: Date;
 }

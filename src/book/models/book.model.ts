@@ -12,6 +12,6 @@ export class BookModel {
   @IsNotEmpty() @IsString() author: string;
   @IsNotEmpty() @IsInt() price: number;
 
-  book_image?: string;
+  // book_image?: string;
   @IsNotEmpty() @IsString() book_isbn: string;
 }

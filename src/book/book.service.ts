@@ -10,7 +10,7 @@ import { PatchBook } from './models/book.patch';
 
 @Injectable()
 export class BookService {
-    imagepath: string;
+    // imagepath: string;
     constructor (
         @InjectRepository(BookEntity)
         private readonly bookRepository: Repository<BookEntity>
@@ -42,12 +42,12 @@ export class BookService {
     }
 
     
-    getSpecificBookId(id:number): Observable<Book> {
-        // return from(this.bookRepository.find(id));
-        const book_id = id;
-        return from(this.bookRepository.findOneBy({book_id}));
-        // return from(this.bookRepository.find({book_id}));
-    }
+    // getSpecificBookId(id:number): Observable<Book> {
+    //     // return from(this.bookRepository.find(id));
+    //     const book_id = id;
+    //     return from(this.bookRepository.findOneBy({book_id}));
+    //     // return from(this.bookRepository.find({book_id}));
+    // }
 
     getSpecificBookName(name:string): Observable<Book> {
         const book_name = name;
@@ -59,10 +59,10 @@ export class BookService {
         return from(this.bookRepository.findOneBy({author}));
     }
 
-    getSpecificBookImage(bimg:string): Observable<Book> {
-        const book_image= bimg;
-        return from(this.bookRepository.findOneBy({book_image}));
-    }
+    // getSpecificBookImage(bimg:string): Observable<Book> {
+    //     const book_image= bimg;
+    //     return from(this.bookRepository.findOneBy({book_image}));
+    // }
 
     getSpecificBookISBN(bisbn:string): Observable<Book> {
         const book_isbn= bisbn;

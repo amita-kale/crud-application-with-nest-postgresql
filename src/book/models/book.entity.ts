@@ -14,8 +14,8 @@ export class BookEntity {
   @Column()
   price: number;
 
-  @Column()
-  book_image: string;
+  // @Column()
+  // book_image: string;
 
   @Column()
   book_isbn: string;

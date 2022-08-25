@@ -5,7 +5,8 @@ export class PatchBook {
         
     // }
 
-    // @IsNotEmpty() @IsInt() book_id?: number;
+    // @IsNotEmpty() @IsInt() 
+    book_id?: number;
     // @IsNotEmpty() 
     // @IsString()
      book_name?: string;
@@ -20,7 +21,7 @@ export class PatchBook {
 
     // @IsNotEmpty() 
     // @IsString() 
-    book_image?: string;
+    // book_image?: string;
 
     // @IsNotEmpty() 
     // @IsString()

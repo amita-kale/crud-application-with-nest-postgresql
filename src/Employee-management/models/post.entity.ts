@@ -1,39 +1,39 @@
 /* eslint-disable prettier/prettier */
-import{Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-export enum department{
-    finance="Finance",
-    software_department="Software development",
-    marketing="Marketing",
-    testing="Testing",
-}
-
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+// export enum department {
+//   finance = 'Finance',
+//   softwaredevelopment = 'Softwaredevelopment',
+//   marketing = 'Marketing',
+//   testing = 'Testing',
+// }
 
 @Entity('employee')
-export class EmpPostEntity{
-    @PrimaryGeneratedColumn('uuid')
-         id : string;
-        
-    @Column({ default : '' })
-    EmployeeName: string;
 
-    @Column({ default : '' })
-    EmployeeAddress: string;
 
-    @Column({ default: '' })
-    image: string;
+export class EmpPostEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    
-    @Column({ type:'enum', enum:department, default :null })
-    department:department;
 
-    @Column({ type: 'int' , default: null})
-    contact: number;
+  @Column({ default: '' })
+  EmployeeName: string;
 
-    @Column({ type: 'int' ,default: null })
-    salary: number;
+  @Column({ default: '' })
+  EmployeeAddress: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  // @Column({ default: '' })
+  // image: string;
 
+  // @Column({ default:''})
+  // email: string;
+
+  @Column({ type: 'int', default: null })
+  contact: number;
+
+  @Column({ type: 'int', default: null })
+  salary: number;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { IsEnum, IsInt, IsNotEmpty, IsString, } from "class-validator";
-import { department } from "./post.entity";
+import {  IsInt, IsNotEmpty, IsString, } from "class-validator";
+
 
 
 export class CreateEmpModel{
-    @IsNotEmpty()
-    @IsString()
-    EmployeeName:string;
+    
+    @IsInt()
+    EmployeeName:number;
 
     @IsNotEmpty()
     @IsString()
@@ -18,13 +18,13 @@ export class CreateEmpModel{
 
     @IsNotEmpty()
     @IsInt()
-    salary?: number;
+    salary: number;
     
-    @IsNotEmpty()
-    image:string;
+    // @IsNotEmpty()
+    // image:string;
 
     @IsNotEmpty()
-    @IsEnum(department)
-    dept:department;
+    @IsString()
+    email: string;
    
 }

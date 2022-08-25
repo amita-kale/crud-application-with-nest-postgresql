@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 export interface EmpPost {
-  id?: string;
+  id?: number;
   EmployeeName?: string;
   EmployeeAddress?: string;
-  Image?: string;
+  // Image?: string;
+  // email?: string;
   contact?: number;
   salary?: number;
   createdAt?: Date;

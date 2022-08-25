@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 
-import {  Body, Controller, Delete, Get, Param, Post, Put, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import { extname } from 'path';
+import {  Body, Controller, Delete, Get, Param, Patch, Post, Put} from '@nestjs/common';
+// import { FileInterceptor } from '@nestjs/platform-express';
+// import { diskStorage } from 'multer';
+// import { extname } from 'path';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { EmpPost } from '../models/post.interface';
@@ -12,7 +12,7 @@ import { EmpService } from '../services/employee.service';
 export class EmpController {
   image_path: string;
   constructor(private empService: EmpService) {}
-  @Post()
+  @Post('/details')
   create(@Body() post: EmpPost): Observable<EmpPost> {
     return this.empService.createPost(post);
   }
@@ -23,9 +23,9 @@ export class EmpController {
   }
 
 
-  @Get(':id')
+  @Get('/details/:id')
   findPostId(
-    @Param('id')id:string
+    @Param('id')id:number
     ): Observable<EmpPost> {
     return this.empService.findById(id);
   }
@@ -39,49 +39,59 @@ export class EmpController {
   //   return this.empService.findPosts(take, skip);
   // }
 
-  @Put(':id')
+  @Put('/details/:id')
   update(
     @Param(
       'id'
     )
-    id: string,
+    id: number,
     @Body() empPost: EmpPost,
   ): Observable<UpdateResult> {
     return this.empService.updatePost(id, empPost);
   }
 
-  @Delete(':id')
+  @Delete('details/:id')
   delete(
     @Param('id'
     )
-    id: string,
+    id: number,
   ): Observable<DeleteResult> {
     return this.empService.deletePost(id);
   }
 
-  @Post('image')
-  @UseInterceptors(
-    FileInterceptor('image', {
-      storage: diskStorage({
-        destination: './images',
-        filename: (req, image, callback) => {
-          const uniqueSuffix =
-            Date.now() + '-' + Math.round(Math.random() * 1e9);
-          const ext = extname(image.originalname);
-          const filename = `${uniqueSuffix}${ext}`;
-          callback(null, filename);
-        },
-      }),
-    }),
-  )
-  handleupload(@UploadedFile() image: Express.Multer.File) {
-    this.image_path = image.path;
-    console.log('image', image);
-    console.log('path', image.path);
-    return 'file upload API' + this.image_path;
-  }
-  @Get('showimage/:image')
-  seeUploadedFile(@Param('image') image, @Res() res) {
-    return res.sendFile(image, { root: './images' });
-  }
+@Patch('update/:id')
+updatedetails(
+  @Param('id') id: number,
+  @Body() empPost: EmpPost,
+): Observable<UpdateResult> {
+  return this.empService.updatedetails(id, empPost);
 }
+
+  // @Post('image')
+  // @UseInterceptors(
+  //   FileInterceptor('image', {
+  //     storage: diskStorage({
+  //       destination: './images',
+  //       filename: (req, image, callback) => {
+  //         const uniqueSuffix =
+  //           Date.now() + '-' + Math.round(Math.random() * 1e9);
+  //         const ext = extname(image.originalname);
+  //         const filename = `${uniqueSuffix}${ext}`;
+  //         callback(null, filename);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // handleupload(@UploadedFile() image: Express.Multer.File) {
+  //   this.image_path = image.path;
+  //   console.log('image', image);
+  //   console.log('path', image.path);
+  //   return 'file upload API' + this.image_path;
+  // }
+  // @Get('showimage/:image')
+  // seeUploadedFile(@Param('image') image, @Res() res) {
+  //   return res.sendFile(image, { root: './images' });
+  // }
+}
+
+

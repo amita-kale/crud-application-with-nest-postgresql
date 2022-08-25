@@ -22,7 +22,7 @@ export class EmpService {
         return from(this.empPostRepository.find());
     }
 
-    findById(id: string):Observable<EmpPost>{
+    findById(id: number):Observable<EmpPost>{
         return from(this.empPostRepository.findOneBy({id}));
     }
     //added
@@ -32,14 +32,19 @@ export class EmpService {
     //     }), );
     // }
 
+    //somefeilds updation
+    updatedetails(id: number, empPost: EmpPost): Observable<UpdateResult> {
+        return from(this.empPostRepository.update(id, empPost));
+      }
+
     
-    updatePost(id: string, empPost: EmpPost):Observable<UpdateResult>{
+    updatePost(id: number, empPost: EmpPost):Observable<UpdateResult>{
         return from(this.empPostRepository.update(id,empPost));
     }
 
 
 
-    deletePost(id: string): Observable<DeleteResult>{
+    deletePost(id: number): Observable<DeleteResult>{
         return from(this.empPostRepository.delete(id));
     }
 }

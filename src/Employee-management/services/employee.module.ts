@@ -1,4 +1,5 @@
-import { Controller, Module } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EmpController } from '../controllers/employee.controller';
 import { EmpPostEntity } from '../models/post.entity';

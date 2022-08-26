@@ -1,4 +1,3 @@
-
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
@@ -14,8 +13,7 @@ async function bootstrap() {
     .setTitle('Book Management')
     .setDescription('Add show Edit Delete -> Book data')
     .setVersion('1.0')
-    .addTag('Group A Assignment')
-    .build();
+    .addTag('Group B Assignment')
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   app.enableCors();

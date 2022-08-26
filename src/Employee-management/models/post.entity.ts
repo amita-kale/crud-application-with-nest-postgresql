@@ -1,21 +1,20 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+/* eslint-disable prettier/prettier */
 
-export enum department {
-  finance = 'Finance',
-  software_department = 'Software development',
-  marketing = 'Marketing',
-  testing = 'Testing',
-}
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+// export enum department {
+//   finance = 'Finance',
+//   softwaredevelopment = 'Softwaredevelopment',
+//   marketing = 'Marketing',
+//   testing = 'Testing',
+// }
 
 @Entity('employee')
+
+
 export class EmpPostEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
+
 
   @Column({ default: '' })
   EmployeeName: string;
@@ -23,11 +22,11 @@ export class EmpPostEntity {
   @Column({ default: '' })
   EmployeeAddress: string;
 
-  @Column({ default: '' })
-  image: string;
+  // @Column({ default: '' })
+  // image: string;
 
-  @Column({ type: 'enum', enum: department, default: null })
-  department: department;
+  // @Column({ default:''})
+  // email: string;
 
   @Column({ type: 'int', default: null })
   contact: number;

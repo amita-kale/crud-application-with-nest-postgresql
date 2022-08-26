@@ -14,7 +14,7 @@ async function bootstrap() {
     .setTitle('Book Management')
     .setDescription('Add show Edit Delete -> Book data')
     .setVersion('1.0')
-    .addTag('Group A Assignment')
+    .addTag('Group B Assignment')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

@@ -1,3 +1,4 @@
+
 import {
   IsDate,
   IsEnum,
@@ -20,6 +21,7 @@ export class CreateUserModel {
   @MinLength(1)
   @MaxLength(15)
   productName: string;
+
 
   @IsNotEmpty()
   @IsInt()

@@ -1,7 +1,4 @@
-import { type } from 'os';
-import { timestamp } from 'rxjs';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-//import {v4 as uuidv4} from 'uuid';
 
 export enum ProductData {
   AVAILABLE = 'Available',
@@ -15,13 +12,13 @@ export enum ProductSize {
 }
 @Entity('product_post')
 export class ProductPostEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id:number;
 
   @Column({ default: '' })
   productName: string;
 
-  @Column({ type: 'bigint', default: null })
+  @Column({ type: 'bigint'})
   price: number;
 
   @Column({ type: 'enum', enum: ProductData, default: null })
@@ -29,9 +26,6 @@ export class ProductPostEntity {
 
   @Column({ type: 'enum', enum: ProductSize, default: null })
   size: ProductSize;
-
-  @Column({ default: '' })
-  image: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

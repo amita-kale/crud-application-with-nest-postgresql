@@ -1,16 +1,19 @@
 
-
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({
-        disableErrorMessages:false,
-        whitelist:true,
-        forbidNonWhitelisted:true
-      }));
+
+  app.enableCors();
+  app.useGlobalPipes(
+    // new ValidationPipe({
+    //   disableErrorMessages: true,
+    //   whitelist: true,
+    //   forbidNonWhitelisted: true,
+    // }),
+  );
   const config = new DocumentBuilder()
     .setTitle('Book Management')
     .setDescription('Add show Edit Delete -> Book data')
@@ -23,9 +26,6 @@ async function bootstrap() {
   app.enableCors();
 
   app.useGlobalPipes(new ValidationPipe());
-
-
-  await app.listen(3001);
-
+  await app.listen(3002);
 }
 bootstrap();

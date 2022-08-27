@@ -1,9 +1,10 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.enableCors();
   app.useGlobalPipes(
     // new ValidationPipe({
@@ -12,16 +13,18 @@ async function bootstrap() {
     //   forbidNonWhitelisted: true,
     // }),
   );
+
   const config = new DocumentBuilder()
-    .setTitle('swagger example')
-    .setDescription('The swagger API description')
+    .setTitle('Book Management')
+    .setDescription('Add show Edit Delete -> Book data')
     .setVersion('1.0')
-    .addTag('swagger')
-    .build();
+    .addTag('Group B Assignment')
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   app.enableCors();
+
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3002);
+
 }
 bootstrap();

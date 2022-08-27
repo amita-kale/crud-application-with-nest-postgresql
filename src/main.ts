@@ -4,12 +4,13 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.useGlobalPipes(
-    new ValidationPipe({
-      disableErrorMessages: true,
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    }),
+    // new ValidationPipe({
+    //   disableErrorMessages: true,
+    //   whitelist: true,
+    //   forbidNonWhitelisted: true,
+    // }),
   );
   const config = new DocumentBuilder()
     .setTitle('swagger example')

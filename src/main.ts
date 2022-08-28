@@ -6,11 +6,12 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(
     new ValidationPipe({
-      disableErrorMessages: true,
+      disableErrorMessages: false,
       whitelist: true,
       forbidNonWhitelisted: true,
     }),
   );
+
   const config = new DocumentBuilder()
     .setTitle('swagger example')
     .setDescription('The swagger API description')
@@ -20,7 +21,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   app.useGlobalPipes(new ValidationPipe());
-
+  app.enableCors();
   await app.listen(3002);
 
   // await app.listen(3000);

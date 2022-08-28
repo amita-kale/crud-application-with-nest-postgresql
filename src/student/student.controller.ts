@@ -19,6 +19,7 @@ import { StudentService } from './student.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { PatchValidateModel } from './models/patchvalidate.model';
 
 @Controller('student')
 export class StudentController {
@@ -28,36 +29,36 @@ export class StudentController {
   @Post() create(
     @Body() validateStudentModel: ValidateStudentModel,
   ): Observable<StudentPost> {
-    validateStudentModel.student_profile = this.imagepath;
+    // validateStudentModel.student_profile = this.imagepath;
     return this.studentService.createPost(validateStudentModel);
   }
 
-  @Post('image')
-  @UseInterceptors(
-    FileInterceptor('student_profile', {
-      storage: diskStorage({
-        destination: './images',
-        filename: (req, image, callback) => {
-          const uniqueSuffix =
-            Date.now() + '-' + Math.round(Math.random() * 1e9);
-          const ext = extname(image.originalname);
-          // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
-          const filename = `${uniqueSuffix}${ext}`;
-          callback(null, filename);
-        },
-      }),
-    }),
-  )
-  handleupload(@UploadedFile() image: Express.Multer.File) {
-    this.imagepath = image.path;
-    console.log('image', image);
-    console.log('path', image.path);
-    return 'file upload API';
-  }
-  @Get('showimage/:image')
-  seeUploadedFile(@Param('image') image, @Res() res) {
-    return res.sendFile(image, { root: './images' });
-  }
+  // @Post('image')
+  // @UseInterceptors(
+  //   FileInterceptor('student_profile', {
+  //     storage: diskStorage({
+  //       destination: './images',
+  //       filename: (req, image, callback) => {
+  //         const uniqueSuffix =
+  //           Date.now() + '-' + Math.round(Math.random() * 1e9);
+  //         const ext = extname(image.originalname);
+  //         // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+  //         const filename = `${uniqueSuffix}${ext}`;
+  //         callback(null, filename);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // handleupload(@UploadedFile() image: Express.Multer.File) {
+  //   this.imagepath = image.path;
+  //   console.log('image', image);
+  //   console.log('path', image.path);
+  //   return 'file upload API';
+  // }
+  // @Get('showimage/:image')
+  // seeUploadedFile(@Param('image') image, @Res() res) {
+  //   return res.sendFile(image, { root: './images' });
+  // }
 
   @Get() findAll(): Observable<StudentPost[]> {
     return this.studentService.findAllPosts();
@@ -76,9 +77,9 @@ export class StudentController {
 
   @Patch(':id') updatePatch(
     @Param('id') id: number,
-    @Body() validateStudentModel: ValidateStudentModel,
+    @Body() patchValidateModel: PatchValidateModel,
   ): Observable<UpdateResult> {
-    return this.studentService.updatePatchPost(id, validateStudentModel);
+    return this.studentService.updatePatchPost(id, patchValidateModel);
   }
 
   @Delete(':id') delete(@Param('id') id: number): Observable<DeleteResult> {

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, identity, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
+import { PatchValidateModel } from './models/patchvalidate.model';
 import { StudentPostEntity } from './models/post.entity';
 import { StudentPost } from './models/post.interface';
 import { ValidateStudentModel } from './models/post.model';
@@ -37,9 +38,9 @@ export class StudentService {
 
   updatePatchPost(
     id: number,
-    validateStudentModel: ValidateStudentModel,
+    patchValidateModel: PatchValidateModel,
   ): Observable<UpdateResult> {
-    return from(this.studentPostRepository.update(id, validateStudentModel));
+    return from(this.studentPostRepository.update(id, patchValidateModel));
   }
 
   deletePost(id: number): Observable<DeleteResult> {

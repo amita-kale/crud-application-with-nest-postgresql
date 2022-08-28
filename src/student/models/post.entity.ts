@@ -10,6 +10,6 @@ export class StudentPostEntity {
 
   @Column() contact: number;
 
-  @Column() address: string;
-  @Column() student_profile: string;
+  @Column() subject: string;
+  // @Column() student_profile: string;
 }

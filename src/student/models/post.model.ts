@@ -5,6 +5,6 @@ export class ValidateStudentModel {
   @IsNotEmpty() @IsEmail() email: string;
   @IsNotEmpty() @IsInt() contact: number;
   @IsNotEmpty() @IsString() address: string;
-  @IsNotEmpty() @IsString() subject: string;
+  // @IsNotEmpty() @IsString() subject: string;
   // @IsNotEmpty() @IsString() student_profile: string;
 }

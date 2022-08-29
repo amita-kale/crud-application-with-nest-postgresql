@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { StudSubjectEntity } from './subject.entity';
 
 @Entity('student_ post')
 export class StudentPostEntity {
@@ -10,6 +18,12 @@ export class StudentPostEntity {
 
   @Column() contact: number;
 
-  @Column() subject: string;
+  @Column() address: string;
+  // @OneToMany((type) => StudSubjectEntity, (sub) => sub.sub_name)
+  // sub_names: StudSubjectEntity[];
   // @Column() student_profile: string;
+
+  @ManyToMany(() => StudSubjectEntity, (sub) => sub.studs)
+  @JoinTable({ name: 'Reference_of_student_subject_table' })
+  sub_names: StudSubjectEntity[];
 }

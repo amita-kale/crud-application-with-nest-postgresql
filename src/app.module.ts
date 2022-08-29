@@ -11,6 +11,7 @@ import { StudentModule } from './student/student.module';
 import { UsersModule } from './usermodule/users.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { SubjectModule } from './subject/subject.module';
+import { StudsubrefModule } from './studsubref/studsubref.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { SubjectModule } from './subject/subject.module';
     ProductModule,
     UsersModule,
     SubjectModule,
+    StudsubrefModule,
   ],
   controllers: [AppController],
   providers: [AppService],

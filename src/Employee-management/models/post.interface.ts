@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+
 export interface EmpPost {
   id?: number;
   EmployeeName?: string;

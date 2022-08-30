@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 
+
+
 import {  Body, Controller, Delete, Get, Param, Patch, Post, Put} from '@nestjs/common';
 // import { FileInterceptor } from '@nestjs/platform-express';
 // import { diskStorage } from 'multer';
@@ -59,14 +61,14 @@ export class EmpController {
     return this.empService.deletePost(id);
   }
 
-@Patch('update/:id')
+@Patch('details/:id')
 updatedetails(
   @Param('id') id: number,
   @Body() empPost: EmpPost,
 ): Observable<UpdateResult> {
   return this.empService.updatedetails(id, empPost);
 }
-
+// <------  Image-Code  ------>
   // @Post('image')
   // @UseInterceptors(
   //   FileInterceptor('image', {

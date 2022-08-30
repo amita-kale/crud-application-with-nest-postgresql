@@ -8,8 +8,8 @@ import { EmpModule } from './Employee-management/services/employee.module';
 import { FlightMModule } from './flight-m/flight-m.module';
 import { ProductModule } from './product/product.module';
 import { StudentModule } from './student/student.module';
-import { FeedModule } from './user/feed.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { UsersModule } from './usermodule/users.module';
 
 @Module({
   imports: [
@@ -31,7 +31,7 @@ import { MulterModule } from '@nestjs/platform-express';
 
     EmpModule,
     ProductModule,
-    FeedModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

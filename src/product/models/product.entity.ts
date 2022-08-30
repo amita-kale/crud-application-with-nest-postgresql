@@ -24,9 +24,10 @@ export class ProductPostEntity {
   @Column({ type: 'enum', enum: ProductData, default: null })
   stock: ProductData;
 
-  @Column({ type: 'enum', enum: ProductSize, default: null })
-  size: ProductSize;
+  // @Column({ type: 'enum', enum: ProductSize, default: null })
+  // size: ProductSize;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
+    productCategory: any;
 }

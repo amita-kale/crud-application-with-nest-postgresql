@@ -11,16 +11,16 @@ async function bootstrap() {
         forbidNonWhitelisted:true
       }));
   const config = new DocumentBuilder()
-    .setTitle('Book Management')
-    .setDescription('Add show Edit Delete -> Book data')
+    .setTitle('Swagger')
+    .setDescription('Add show Edit Delete ->  data')
     .setVersion('1.0')
-    .addTag('Group D Assignment')
+    .addTag('Group B Assignment')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
   app.enableCors();
-  await app.listen(3006);
+  await app.listen(3002);
 }
 bootstrap();
 

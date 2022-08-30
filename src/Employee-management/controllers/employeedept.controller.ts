@@ -5,7 +5,7 @@ import { EmployeeDeptPost } from '../models/employeedept.interface';
 import { EmployeeDeptService } from '../services/employeedept.service';
 
 @Controller('employeedepartment')
-export class EmployeedeptController {
+export class EmployeeDeptController {
     constructor(private employeedeptService: EmployeeDeptService) {};
 
     @Post('/post')

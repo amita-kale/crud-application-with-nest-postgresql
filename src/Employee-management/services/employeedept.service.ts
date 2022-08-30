@@ -3,14 +3,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
 import {  Repository  } from 'typeorm';
-import { EmployeedeptEntity } from '../models/employeedept.entity';
+import { EmployeeDeptEntity } from '../models/employeedept.entity';
 import { EmployeeDeptPost } from '../models/employeedept.interface';
 @Injectable()
 export class EmployeeDeptService {
 
     constructor(
-        @InjectRepository(EmployeedeptEntity)
-        private readonly EmployeedeptRepository: Repository<EmployeedeptEntity>
+        @InjectRepository(EmployeeDeptEntity)
+        private readonly EmployeedeptRepository: Repository<EmployeeDeptEntity>
     ){}
 
     createDepartment(employeedeptPost: EmployeeDeptPost): Observable<EmployeeDeptPost>{

@@ -19,10 +19,7 @@ import { FlightMModule } from './flight-m/flight-m.module';
 // eslint-disable-next-line prettier/prettier
 import { ProductModule } from './product/product.module';
 // eslint-disable-next-line prettier/prettier
-import { StudentModule } from './student/student.module';
-
-// eslint-disable-next-line prettier/prettier
-
+import { StudentModule } from './student/student.module'
 import { MulterModule } from '@nestjs/platform-express';
 import { CategoryModule } from './book/category/category.module';
 
@@ -48,7 +45,7 @@ import { CategoryModule } from './book/category/category.module';
     MulterModule.register({ dest:'./images' }),
     EmpModule,
     ProductModule,
-    EmpModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

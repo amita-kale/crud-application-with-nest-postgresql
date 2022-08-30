@@ -24,12 +24,14 @@ import { StudentModule } from './student/student.module';
 // eslint-disable-next-line prettier/prettier
 
 import { MulterModule } from '@nestjs/platform-express';
+import { CategoryModule } from './book/category/category.module';
 
 @Module({
   imports: [
     StudentModule,
     FlightMModule,
     BookModule,
+    CategoryModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',

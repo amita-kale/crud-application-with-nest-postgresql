@@ -1,25 +1,38 @@
-import { IsEnum, IsInt, IsNotEmpty, IsString, } from "class-validator";
-import { ProductData, ProductSize } from "./product.entity";
+
+import {
+  IsDate,
+  IsEnum,
+  IsInt,
+  IsNotEmpty,
+  IsNumberString,
+  IsString,
+  MaxLength,
+  maxLength,
+  MinLength,
+} from 'class-validator';
+import { Unique } from 'typeorm';
+import { ProductData, ProductSize } from './product.entity';
+export class CreateUserModel {
+  id: number;
+  // @IsNumberString()
+  // id:number;
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(1)
+  @MaxLength(15)
+  productName: string;
 
 
-export class CreateUserModel{
-    @IsNotEmpty()
-    @IsString()
-    productName:string;
+  @IsNotEmpty()
+  @IsInt()
+  price: number;
 
-    @IsNotEmpty()
-    @IsInt()
-    price:number;
-   
+  @IsNotEmpty()
+  @IsEnum(ProductData)
+  stock: ProductData;
 
-    @IsNotEmpty()
-    @IsEnum(ProductData)
-    stock:ProductData;
+  @IsNotEmpty()
+  @IsEnum(ProductSize)
+  size: ProductSize;
 
-    @IsNotEmpty()
-    @IsEnum(ProductSize)
-    size:ProductSize;
-
-    @IsNotEmpty()
-    image:string;
 }

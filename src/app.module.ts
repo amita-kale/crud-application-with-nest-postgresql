@@ -41,7 +41,9 @@ import { CategoryModule } from './book/category/category.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
+      //freezeTableName: true,
+
     }),
 
     // eslint-disable-next-line prettier/prettier

@@ -7,25 +7,16 @@ async function bootstrap() {
 
   app.useGlobalPipes(
     new ValidationPipe({
-      disableErrorMessages: false,
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    }),
-  );
-
-  app.useGlobalPipes(
-    new ValidationPipe({
-      disableErrorMessages: false,
-      whitelist: true,
-      forbidNonWhitelisted: true,
+      //disableErrorMessages:false,
+      //whitelist:true,
+      //forbidNonWhitelisted:true
     }),
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Book Management')
-    .setDescription('Add show Edit Delete -> Book data')
+    .setTitle('Swagger')
+    .setDescription('Add show Edit Delete ->  data')
     .setVersion('1.0')
-
     .addTag('Group B Assignment')
     .build();
   const document = SwaggerModule.createDocument(app, config);

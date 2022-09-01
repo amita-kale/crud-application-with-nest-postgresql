@@ -1,5 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,6 +9,10 @@ import { AppService } from './app.service';
 // eslint-disable-next-line prettier/prettier
 import { BookModule } from './book/book.module';
 
+import { FeedModule } from './Employee-management/services/employee.module';
+import { PassengerMModule } from './flight-m/passenger-m.module';
+
+
 // eslint-disable-next-line prettier/prettier
 import { EmpModule } from './Employee-management/services/employee.module';
 // eslint-disable-next-line prettier/prettier
@@ -17,6 +20,7 @@ import { EmpModule } from './Employee-management/services/employee.module';
 
 import { FlightMModule } from './flight-m/flight-m.module';
 // eslint-disable-next-line prettier/prettier
+
 import { ProductModule } from './product/product.module';
 // eslint-disable-next-line prettier/prettier
 import { StudentModule } from './student/student.module'
@@ -26,7 +30,7 @@ import { CategoryModule } from './book/category/category.module';
 @Module({
   imports: [
     StudentModule,
-    FlightMModule,
+    PassengerMModule,
     BookModule,
     CategoryModule,
     ConfigModule.forRoot({ isGlobal: true }),

@@ -13,55 +13,55 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-import { FlightMService } from './flight-m.service';
-import { CreateFlightMDto } from './dto/create-flight-m.dto';
+import { PassengerMService } from './passenger-m.service';
+import { CreatePassengerMDto } from './dto/create-passenger-m.dto';
 // import { UpdateFlightMDto } from './dto/update-flight-m.dto';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { ApiTags } from '@nestjs/swagger';
 
-@Controller('flight-m')
-@ApiTags('flight')
-export class FlightMController {
+@Controller('passenger-m')
+@ApiTags('passenger')
+export class PassengerMController {
   imagepath: any;
-  constructor(private readonly flightMService: FlightMService) {}
+  constructor(private readonly passengerMService: PassengerMService) {}
 
   @Post()
-  create(@Body() createFlightMDto: CreateFlightMDto) {
+  create(@Body() createPassengerMDto: CreatePassengerMDto) {
     // CreateFlightMDto.Image = this.imagepath;
-    return this.flightMService.create(createFlightMDto);
+    return this.passengerMService.create(createPassengerMDto);
   }
 
   @Get()
   findAll() {
-    return this.flightMService.findAll();
+    return this.passengerMService.findAll(); //get all
   }
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.flightMService.findOne(id);
+    return this.passengerMService.findOne(id);
   }
 
   @Patch(':ticket')
   // @Body() createFlightMDto: CreateFlightMDto
   update(
     @Param('ticket') ticket: number,
-    @Body() patchFlight: CreateFlightMDto,
+    @Body() patchFlight: CreatePassengerMDto,
   ) {
-    return this.flightMService.updatedata(ticket, patchFlight);
+    return this.passengerMService.updatedata(ticket, patchFlight);
   }
 
   @Put(':ticket')
   updateput(
     @Param('ticket') ticket: number,
-    @Body() patchFlight: CreateFlightMDto,
+    @Body() patchFlight: CreatePassengerMDto,
   ) {
-    return this.flightMService.updatedata(ticket, patchFlight);
+    return this.passengerMService.updatedata(ticket, patchFlight);
   }
 
   @Delete(':ticket')
   remove(@Param('ticket') ticket: number) {
-    return this.flightMService.remove(ticket);
+    return this.passengerMService.remove(ticket);
   }
 
   @Post('images')

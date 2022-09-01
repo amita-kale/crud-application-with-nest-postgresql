@@ -12,8 +12,7 @@ import {
 export class ProductPostCategory {
   @PrimaryGeneratedColumn()
   id: number;
-  // @Column({default:''})
-  // productSpecification:string;
+
   @Column({default:''})
   size:string;
 
@@ -21,8 +20,7 @@ export class ProductPostCategory {
     () => ProductPostEntity,
     (productEntity) => productEntity.productCategory,
   )
-  //@JoinTable()
-  productEntity: ProductPostEntity;
+  
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 }

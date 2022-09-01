@@ -25,6 +25,7 @@ import { StudentModule } from './student/student.module';
 
 import { MulterModule } from '@nestjs/platform-express';
 
+
 @Module({
   imports: [
     StudentModule,

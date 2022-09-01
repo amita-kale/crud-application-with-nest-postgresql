@@ -21,13 +21,5 @@ export class ProductCategoryService {
   getProductCategory():Observable<ProductPostCategoryInterface[]>{
     return from(this.ProductCategoryRepository.find())
   }
-  getProductCategoryById(id:number):Observable<ProductPostCategoryInterface>{
-    return from(this.ProductCategoryRepository.findOneBy({id}))
-  }
-  updateProductCategory(id: number, feedPost:ProductPostCategoryInterface):Observable<UpdateResult>{
-    return from(this.ProductCategoryRepository.update(id,feedPost))
-  }
-  deleteProductCategory(id:number):Observable<DeleteResult>{
-    return from(this.ProductCategoryRepository.delete(id))
-  }
+ 
 }

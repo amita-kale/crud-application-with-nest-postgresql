@@ -1,40 +1,48 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { from, Observable } from 'rxjs';
+
+import { Repository, UpdateResult } from 'typeorm';
 import { CreateFlightMDto } from './dto/create-flight-m.dto';
-import { UpdateFlightMDto } from './dto/update-flight-m.dto';
+import { PatchFlight } from './dto/flight.patch';
 import { FlightM } from './entities/flight-m.entity';
+import { Flightinterface } from './entities/flight-m.interface';
 
 @Injectable()
 export class FlightMService {
+  // imagepath: string;
   constructor(
     @InjectRepository(FlightM)
     private readonly flightRepository: Repository<FlightM>,
   ) {}
+
+  //-----------------------POST API-----------------------------------------------
+
   create(CreateFlightMDto: CreateFlightMDto): Promise<FlightM> {
-    let fli: FlightM = new FlightM();
-    //  fli.ticket=CreateFlightMDto.ticket;
-    fli.passenger = CreateFlightMDto.passenger;
-    fli.Destination = CreateFlightMDto.Destination;
-    return this.flightRepository.save(fli);
+    return this.flightRepository.save(CreateFlightMDto);
   }
 
   findAll(): Promise<FlightM[]> {
     return this.flightRepository.find();
   }
 
-  findOne(ticket: number) {
-    return this.flightRepository.findOneBy({ ticket });
+  findOne(id: number): Observable<Flightinterface> {
+    const ticket = id;
+    return from(this.flightRepository.findOneBy({ ticket }));
   }
 
-  update(ticket: number, UpdateFlightMDto: UpdateFlightMDto) {
-    let fli: FlightM = new FlightM();
+  updateAll(
+    ticket: number,
+    patchFlight: PatchFlight,
+  ): Observable<UpdateResult> {
+    return from(this.flightRepository.update(ticket, patchFlight));
+  }
 
-    fli.ticket = ticket;
-
-    fli.passenger = UpdateFlightMDto.passenger;
-    fli.Destination = UpdateFlightMDto.Destination;
-    return this.flightRepository.save(fli);
+  updatedata(
+    ticket: number,
+    patchFlight: PatchFlight,
+  ): Observable<UpdateResult> {
+    return from(this.flightRepository.update(ticket, patchFlight));
   }
 
   remove(ticket: number) {

@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,26 +8,32 @@ import { AppService } from './app.service';
 // eslint-disable-next-line prettier/prettier
 import { BookModule } from './book/book.module';
 
+
+import { PassengerMModule } from './flight-m/passenger-m.module';
+
 // eslint-disable-next-line prettier/prettier
 import { EmpModule } from './Employee-management/services/employee.module';
 // eslint-disable-next-line prettier/prettier
 
 
-import { FlightMModule } from './flight-m/flight-m.module';
 // eslint-disable-next-line prettier/prettier
+
 import { ProductModule } from './product/product.module';
 // eslint-disable-next-line prettier/prettier
 import { StudentModule } from './student/student.module';
-
-// eslint-disable-next-line prettier/prettier
-
 import { MulterModule } from '@nestjs/platform-express';
+
+import { SubjectModule } from './subject/subject.module';
+
 import { CategoryModule } from './book/category/category.module';
+import { StudsubrefModule } from './studsubref/studsubref.module';
+import { UsersModule } from './usermodule/users.module';
+
 
 @Module({
   imports: [
     StudentModule,
-    FlightMModule,
+    PassengerMModule,
     BookModule,
     CategoryModule,
     ConfigModule.forRoot({ isGlobal: true }),
@@ -42,15 +46,16 @@ import { CategoryModule } from './book/category/category.module';
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: false,
-      //freezeTableName: true,
 
     }),
 
     // eslint-disable-next-line prettier/prettier
-    MulterModule.register({ dest:'./images' }),
+    MulterModule.register({ dest: './images' }),
     EmpModule,
     ProductModule,
-    EmpModule,
+    UsersModule,
+    SubjectModule,
+    StudsubrefModule,
   ],
   controllers: [AppController],
   providers: [AppService],

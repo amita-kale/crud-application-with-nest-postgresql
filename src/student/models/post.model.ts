@@ -5,12 +5,6 @@ export class ValidateStudentModel {
   @IsNotEmpty() @IsEmail() email: string;
   @IsNotEmpty() @IsInt() contact: number;
   @IsNotEmpty() @IsString() address: string;
-  @IsNotEmpty() @IsString() student_profile: string;
-
-  // @IsNotEmpty() @IsEnum(ProductData)
-  // stock:ProductData;
-  // @IsNotEmpty()
-  // @IsEnum(ProductSize)
-  // size:ProductSize;
-  // @IsNotEmpty() image: string;
+  // @IsNotEmpty() @IsString() subject: string;
+  // @IsNotEmpty() @IsString() student_profile: string;
 }

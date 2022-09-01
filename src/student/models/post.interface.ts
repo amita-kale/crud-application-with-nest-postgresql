@@ -4,5 +4,5 @@ export interface StudentPost {
   email?: string;
   contact?: number;
   address?: string;
-  student_profile?: string;
+  // student_profile?: string;
 }

@@ -1,26 +1,18 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { IsNotEmpty, IsString, IsInt } from 'class-validator';
-@Entity()
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { PassengerM } from './passenger-m.entity';
+@Entity('FlightM')
 export class FlightM {
   @PrimaryGeneratedColumn()
-  @IsInt()
   ticket: number;
   @Column()
-  @IsString()
-  @IsNotEmpty()
-  passenger: String;
+  from: string;
+  @Column({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
+  createAt: Date;
   @Column()
-  @IsString()
-  @IsNotEmpty()
-  Destination: String;
+  flightCompany: string;
 
-  @CreateDateColumn({ nullable: true })
-  createdAt: Date;
-  @CreateDateColumn({ nullable: true })
-  updatedAt: Date;
+  @ManyToMany(() => PassengerM, (passenger: PassengerM) => passenger.category)
+  passenger: PassengerM[];
+  // @Column({ type: 'timestamptz' }) // Recommended
+  //   date_time_with_timezone: Date;
 }

@@ -6,9 +6,10 @@ import { EmpPostEntity } from '../models/post.entity';
 import { EmpService } from './employee.service';
 
 @Module({
-  imports:[TypeOrmModule.forFeature([EmpPostEntity])],
+  imports:[TypeOrmModule.forFeature([EmpPostEntity ])],
   providers: [EmpService],
   controllers: [EmpController],
+  exports:[TypeOrmModule.forFeature([EmpPostEntity])]
 })
 export class EmpModule {}
  

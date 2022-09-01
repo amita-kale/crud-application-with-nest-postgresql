@@ -46,7 +46,7 @@ import { UsersModule } from './usermodule/users.module';
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: false,
-
+      
     }),
 
     // eslint-disable-next-line prettier/prettier

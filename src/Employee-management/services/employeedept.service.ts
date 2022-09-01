@@ -13,11 +13,11 @@ export class EmployeeDeptService {
         private readonly EmployeedeptRepository: Repository<EmployeeDeptEntity>
     ){}
 
-    createDepartment(employeedeptPost: EmployeeDeptPost): Observable<EmployeeDeptPost>{
+    createEmployeeDept(employeedeptPost: EmployeeDeptPost): Observable<EmployeeDeptPost>{
         return from(this.EmployeedeptRepository.save(employeedeptPost));
     }
 
-    findAllDepartments(): Observable<EmployeeDeptPost[]>{
+    findAllEmployeeDept(): Observable<EmployeeDeptPost[]>{
         return from(this.EmployeedeptRepository.find());
     }
 

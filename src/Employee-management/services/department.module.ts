@@ -10,6 +10,6 @@ import { DepartmentPostEntity} from '../models/department.entity';
   imports:[TypeOrmModule.forFeature([DepartmentPostEntity])],
   providers: [DepartmentService],
   controllers: [DepartmentController],
-  exports:[TypeOrmModule.forFeature([DepartmentPostEntity])]
+  // exports:[TypeOrmModule.forFeature([DepartmentPostEntity])]
 })
 export class DepartmentModule {}

@@ -25,7 +25,6 @@ export class CreateEmpModel{
     
     // @IsNotEmpty()
     // image:string;
-
     // @IsNotEmpty()
     // @IsString()
     // email: string;

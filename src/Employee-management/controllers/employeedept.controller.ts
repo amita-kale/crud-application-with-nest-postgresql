@@ -8,13 +8,13 @@ import { EmployeeDeptService } from '../services/employeedept.service';
 export class EmployeeDeptController {
     constructor(private employeedeptService: EmployeeDeptService) {};
 
-    @Post('/post')
-    create(@Body() empdept: EmployeeDeptPost): Observable<EmployeeDeptPost> {
-      return this.employeedeptService.createDepartment(empdept);
+    @Post('/empdept')
+    createdata(@Body() empdept: EmployeeDeptPost): Observable<EmployeeDeptPost> {
+      return this.employeedeptService.createEmployeeDept(empdept);
     }
 
-    @Get('/post')
-   findDepartment(): Observable<EmployeeDeptPost[]>{
-    return this.employeedeptService.findAllDepartments();
+    @Get('/empdept')
+   findEmployeeDept(): Observable<EmployeeDeptPost[]>{
+    return this.employeedeptService.findAllEmployeeDept();
   }
 }

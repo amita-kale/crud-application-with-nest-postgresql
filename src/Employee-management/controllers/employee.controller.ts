@@ -8,12 +8,15 @@ import {  Body, Controller, Delete, Get, Param, Patch, Post, Put} from '@nestjs/
 // import { extname } from 'path';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
+import { EmployeeDeptPost } from '../models/employeedept.interface';
+import { EmployeeDeptService } from '../services/employeedept.service';
 import { EmpPost } from '../models/post.interface';
 import { EmpService } from '../services/employee.service';
 @Controller('emp')
 export class EmpController {
   image_path: string;
-  constructor(private empService: EmpService) {}
+  constructor(private empService: EmpService,private employeedeptService: EmployeeDeptService) {};
+  
   @Post('/details')
   create(@Body() post: EmpPost): Observable<EmpPost> {
     return this.empService.createPost(post);
@@ -94,6 +97,17 @@ updatedetails(
   // seeUploadedFile(@Param('image') image, @Res() res) {
   //   return res.sendFile(image, { root: './images' });
   // }
+
+  //third table
+  @Post('/empdept')
+    createdata(@Body() empdept: EmployeeDeptPost): Observable<EmployeeDeptPost> {
+      return this.employeedeptService.createEmployeeDept(empdept);
+    }
+
+    @Get('/empdept')
+   findEmployeeDept(): Observable<EmployeeDeptPost[]>{
+    return this.employeedeptService.findAllEmployeeDept();
+  }
 }
 
 

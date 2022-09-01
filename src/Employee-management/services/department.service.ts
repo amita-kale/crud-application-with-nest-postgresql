@@ -20,5 +20,11 @@ export class DepartmentService {
     findAllDepartments(): Observable<DepartmentPost[]>{
         return from(this.departmentPostRepository.find());
     }
+    deletePost(id: number): Observable<DeleteResult>{
+        return from(this.departmentPostRepository.delete(id));
+    }
+    updatepost(id: number, departmentPost: DepartmentPost): Observable<UpdateResult> {
+        return from(this.departmentPostRepository.update(id, departmentPost));
+      }
 
 }

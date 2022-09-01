@@ -3,18 +3,24 @@ import { Injectable, UploadedFile } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
+import { BookCatEntity } from './category/category_book/bookcat.entity';
+import { BookCatModel } from './category/category_book/bookcat.model';
 import { BookEntity } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
+import {BookCat} from './category/category_book/bookcat.interface';
 // import { BookModel } from './models/book.model';
 
 @Injectable()
 export class BookService {
+    // bookCatRepository: any;
     // imagepath: string;
     constructor (
         @InjectRepository(BookEntity)
-        private readonly bookRepository: Repository<BookEntity>
+        private readonly bookRepository: Repository<BookEntity>,
+        @InjectRepository(BookCatEntity)
+        private readonly bookCatRepository: Repository<BookCatEntity>
     ) {}
 
     // addBook(bookModel: BookModel) {
@@ -86,4 +92,11 @@ export class BookService {
     deleteBook(id: number): Observable<DeleteResult> {
         return from(this.bookRepository.delete(id));
     }
+
+
+
+    addBookCat(bookCatModel: BookCatModel): Observable<BookCatEntity> {
+        return from(this.bookCatRepository.save(bookCatModel));
+        // return from(this.bookRepository.save(bookCatModel));
+}
 }

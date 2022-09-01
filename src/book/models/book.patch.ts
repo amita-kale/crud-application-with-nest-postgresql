@@ -1,45 +1,10 @@
-// // import { IsInt, IsNotEmpty, IsString } from "class-validator";
-
-// export class PatchBook {
-//     // constructor(parameters) {
-        
-//     // }
-
-//     // @IsNotEmpty() @IsInt() 
-//     book_id?: number;
-//     // @IsNotEmpty() 
-//     // @IsString()
-//      book_name?: string;
-
-//     // @IsNotEmpty() 
-//     // @IsString() 
-//     author?: string;
-
-//     // @IsNotEmpty() 
-//     // @IsInt() 
-//     price?: number;
-
-//     // @IsNotEmpty() 
-//     // @IsString() 
-//     // book_image?: string;
-
-//     // @IsNotEmpty() 
-//     // @IsString()
-//     book_isbn?: string;
-// }
-
-
-
 
 
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDefined, IsInt, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
 
 export class PatchBook {
-    // constructor(parameters) {
-        
-    // }
-    // @IsDefined()
+   
     @IsNotEmpty() @IsInt() 
     @IsOptional() @ApiProperty ({required: false})
     book_id?: number;
@@ -68,13 +33,13 @@ export class PatchBook {
     @IsOptional() @ApiProperty ({required: false})
     price?: number;
 
-    @IsNotEmpty() 
-    @IsString() 
-    // @IsDefined()
-    @MinLength(4)
-    @MaxLength(50)
-    @IsOptional() @ApiProperty ({required: false})
-    book_image?: string;
+    // @IsNotEmpty() 
+    // @IsString() 
+    // // @IsDefined()
+    // @MinLength(4)
+    // @MaxLength(50)
+    // @IsOptional() @ApiProperty ({required: false})
+    // book_image?: string;
 
     @IsNotEmpty() 
     @IsString()

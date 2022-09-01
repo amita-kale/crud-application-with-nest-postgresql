@@ -8,14 +8,14 @@ import { AppService } from './app.service';
 // eslint-disable-next-line prettier/prettier
 import { BookModule } from './book/book.module';
 
-import { FeedModule } from './Employee-management/services/employee.module';
+
 import { PassengerMModule } from './flight-m/passenger-m.module';
 
 // eslint-disable-next-line prettier/prettier
 import { EmpModule } from './Employee-management/services/employee.module';
 // eslint-disable-next-line prettier/prettier
 
-import { FlightMModule } from './flight-m/flight-m.module';
+
 // eslint-disable-next-line prettier/prettier
 
 import { ProductModule } from './product/product.module';
@@ -46,6 +46,7 @@ import { UsersModule } from './usermodule/users.module';
       database: process.env.DB_DATABASE,
       autoLoadEntities: true,
       synchronize: false,
+
     }),
 
     // eslint-disable-next-line prettier/prettier

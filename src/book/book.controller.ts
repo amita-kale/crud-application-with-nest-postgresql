@@ -18,6 +18,8 @@ import { extname } from 'path';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { BookService } from './book.service';
+import { BookCat } from './category/category_book/bookcat.interface';
+import { BookCatModel } from './category/category_book/bookcat.model';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
@@ -124,4 +126,23 @@ export class BookController {
   delete(@Param('id') id: number): Observable<DeleteResult> {
     return this.bookService.deleteBook(id);
   }
+
+
+
+  @Post("/bookcat")
+  addBookCat(@Body() bookCatModel: BookCatModel): Observable<BookCat> {
+  
+    console.log(bookCatModel);
+    return this.bookService.addBookCat(bookCatModel);
+  }
+
+  
 }
+
+
+
+
+
+
+
+

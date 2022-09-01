@@ -11,9 +11,7 @@ import {
  
 
   import { Observable } from 'rxjs';
-  // import { DeleteResult, UpdateResult } from 'typeorm';
   import { CategoryModel } from './category.model';
-  // import { PatchCategory } from './category.patch';
 import { CategoryService } from './category.service';
 import { Category } from './category.interface';
 

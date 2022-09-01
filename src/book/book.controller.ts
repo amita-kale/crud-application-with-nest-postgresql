@@ -26,55 +26,55 @@ import { PatchBook } from './models/book.patch';
 @Controller('book')
 export class BookController {
   constructor(private bookService: BookService) {}
-  imagepath: string = '';
+  // imagepath: string = '';
   @Post()
   // @IsNotEmpty()
   add(@Body() bookModel: BookModel): Observable<Book> {
-    bookModel.book_image = this.imagepath;
+    // bookModel.book_image = this.imagepath;
     return this.bookService.addBook(bookModel);
     // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
   }
 
-  @Post('image')
-  @UseInterceptors(
-    FileInterceptor('image', {
-      storage: diskStorage({
-        destination: './images',
-        filename: (req, image, callback) => {
-          const uniqueSuffix =
-            Date.now() + '-' + Math.round(Math.random() * 1e9);
-          const ext = extname(image.originalname);
-          // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
-          const filename = `${uniqueSuffix}${ext}`;
-          callback(null, filename);
-        },
-      }),
-    }),
-  )
-  handleupload(@UploadedFile() image: Express.Multer.File) {
-    this.imagepath = image.path;
-    console.log('image', image);
-    console.log('path', image.path);
+  // @Post('image')
+  // @UseInterceptors(
+  //   FileInterceptor('image', {
+  //     storage: diskStorage({
+  //       destination: './images',
+  //       filename: (req, image, callback) => {
+  //         const uniqueSuffix =
+  //           Date.now() + '-' + Math.round(Math.random() * 1e9);
+  //         const ext = extname(image.originalname);
+  //         // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+  //         const filename = `${uniqueSuffix}${ext}`;
+  //         callback(null, filename);
+  //       },
+  //     }),
+  //   }),
+  // )
+  // handleupload(@UploadedFile() image: Express.Multer.File) {
+  //   this.imagepath = image.path;
+  //   console.log('image', image);
+  //   console.log('path', image.path);
 
-    return 'file upload API' + this.imagepath;
-    // return this.bookService.handleupload(image);
-  }
+  //   return 'file upload API' + this.imagepath;
+  //   // return this.bookService.handleupload(image);
+  // }
 
-  @Get('showimage/:image')
-  seeUploadedFile(@Param('image') image, @Res() res) {
-    return res.sendFile(image, { root: './images' });
-  }
+  // @Get('showimage/:image')
+  // seeUploadedFile(@Param('image') image, @Res() res) {
+  //   return res.sendFile(image, { root: './images' });
+  // }
 
   @Get()
   findAllBook(): Observable<Book[]> {
     return this.bookService.findAllBooks();
   }
 
-  @Get(':id')
-  // getSpecificStudent(@Param('id') id:number): Book {
-  getSpecificBookId(@Param('id') id: number): Observable<Book> {
-    return this.bookService.getSpecificBookId(id);
-  }
+  // @Get(':id')
+  // // getSpecificStudent(@Param('id') id:number): Book {
+  // getSpecificBookId(@Param('id') id: number): Observable<Book> {
+  //   return this.bookService.getSpecificBookId(id);
+  // }
 
   @Get('bname/:name')
   getSpecificBookName(@Param('name') name: string): Observable<Book> {
@@ -90,17 +90,13 @@ export class BookController {
   getSpecificBookPrice(@Param('price') price: number): Observable<Book> {
     return this.bookService.getSpecificBookPrice(price);
   }
-  @Get('bimg/:bimg')
-  getSpecificBookImage(@Param('bimg') bimg: string): Observable<Book> {
-    return this.bookService.getSpecificBookImage(bimg);
-  }
 
   @Get('isbn/:bisbn')
   getSpecificBookISBN(@Param('bisbn') bisbn: string): Observable<Book> {
     return this.bookService.getSpecificBookISBN(bisbn);
   }
 
-  @Put(':id')
+  @Put('/:id')
   updatePut(
     @Param('id') id: number,
     @Body() bookModel: BookModel,
@@ -116,7 +112,7 @@ export class BookController {
   //     return this.bookService.updatePatchBook(id,bookModel)
   // }
 
-  @Patch(':id')
+  @Patch('/:id')
   updatePatch(
     @Param('id') id: number,
     @Body() patchBook: PatchBook,
@@ -124,7 +120,7 @@ export class BookController {
     return this.bookService.updatePatchBook(id, patchBook);
   }
 
-  @Delete(':id')
+  @Delete('/:id')
   delete(@Param('id') id: number): Observable<DeleteResult> {
     return this.bookService.deleteBook(id);
   }

@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
@@ -16,23 +18,31 @@ export class EmpService {
         return from(this.empPostRepository.save(empPost));
     }
 
-    findById(id:number):Observable<EmpPost>{
-        return from(this.empPostRepository.findOneBy({id}));
-    }
-    //added
-    findPosts(take: number=10, skip:number=0): Observable<EmpPost[]>{
-        return from (this.empPostRepository.findAndCount({take,skip}).then(([posts]) => {
-            return<EmpPost[]>posts;
-        }), );
-    }
-
     findAllPosts(): Observable<EmpPost[]>{
         return from(this.empPostRepository.find());
     }
 
+    findById(id: number):Observable<EmpPost>{
+        return from(this.empPostRepository.findOneBy({id}));
+    }
+    //added
+    // findPosts(take=10, skip=0): Observable<EmpPost[]>{
+    //     return from (this.empPostRepository.findAndCount({take,skip}).then(([posts]) => {
+    //         return<EmpPost[]>posts;
+    //     }), );
+    // }
+
+    //somefeilds updation
+    updatedetails(id: number, empPost: EmpPost): Observable<UpdateResult> {
+        return from(this.empPostRepository.update(id, empPost));
+      }
+
+    
     updatePost(id: number, empPost: EmpPost):Observable<UpdateResult>{
         return from(this.empPostRepository.update(id,empPost));
     }
+
+
 
     deletePost(id: number): Observable<DeleteResult>{
         return from(this.empPostRepository.delete(id));

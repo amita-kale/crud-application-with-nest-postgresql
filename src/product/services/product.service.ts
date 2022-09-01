@@ -23,23 +23,23 @@ export class ProductService {
     return from(this.ProductPostRepository.find());
   }
   // FIND DATA BY ID:
-  findById(id: string): Observable<ProductPost> {
+  findById(id: number): Observable<ProductPost> {
     return from(this.ProductPostRepository.findOneBy({ id }));
   }
   // FIND DATA THROUGH EACH FIELD:
-  findByQuery(id: string): Observable<ProductPost> {
+  findByQuery(id: number): Observable<ProductPost> {
     return from(this.ProductPostRepository.findOneBy({ id }));
   }
   // UPDATE THE WHOLE DATA:
-  updateData(id: string, feedPost: ProductPost): Observable<UpdateResult> {
+  updateData(id: number, feedPost: ProductPost): Observable<UpdateResult> {
     return from(this.ProductPostRepository.update(id, feedPost));
   }
   // UPDATE SOME FEILDS OF THE DATA:
-  updateSomeData(id: string, feedPost: ProductPost): Observable<UpdateResult> {
+  updateSomeData(id: number, feedPost: ProductPost): Observable<UpdateResult> {
     return from(this.ProductPostRepository.update(id, feedPost));
   }
   // DELETE THE DATA THROUGH ID:
-  DeleteData(id: string): Observable<DeleteResult> {
+  DeleteData(id: number): Observable<DeleteResult> {
     return from(this.ProductPostRepository.delete(id));
   }
 }

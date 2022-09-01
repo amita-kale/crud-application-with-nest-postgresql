@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('employeedepartment')
 export class EmployeeDeptEntity{
@@ -7,6 +7,12 @@ export class EmployeeDeptEntity{
 @PrimaryGeneratedColumn()
 id: number;
 
+
+@Column()
+employeeId: number;
+
+@Column()
+departmentId: number;
 
     
 }

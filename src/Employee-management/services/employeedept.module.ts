@@ -10,6 +10,6 @@ import { EmployeeDeptService } from './employeedept.service';
   imports:[TypeOrmModule.forFeature([EmployeeDeptEntity ])],
   providers: [EmployeeDeptService],
   controllers: [EmployeeDeptController],
-  exports:[TypeOrmModule.forFeature([EmployeeDeptEntity])]
+  //exports:[TypeOrmModule.forFeature([EmployeeDeptEntity])]
 })
 export class EmployeeDeptModule {}

@@ -5,17 +5,28 @@ import {
   Get,
   Param,
   ParseIntPipe,
+
   Patch,
   Post,
   Put,
+  Res,
+  UploadedFile,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiTags } from '@nestjs/swagger';
+import { extname } from 'path';
 import { CreateUserDto } from '../dtos/CreateUser.dtos';
 import { UsersService } from '../services/users.service';
-
+import { diskStorage } from 'multer';
+@ApiTags('Users')
 @Controller('users')
+
+
 export class UsersController {
+  imagepath: string;
   constructor(private readonly userService: UsersService) {}
 
   @Get()
@@ -47,4 +58,33 @@ export class UsersController {
   updateAllUser(@Param('id') id: any, @Body() createUserDto) {
     return this.userService.updateAllUser(+id, createUserDto);
   }
+  @Post('image')
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './images',
+        filename: (req, image, callback) => {
+          const uniqueSuffix =
+            Date.now() + '-' + Math.round(Math.random() * 1e9);
+          const ext = extname(image.originalname);
+          // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+          const filename = `${uniqueSuffix}${ext}`;
+          callback(null, filename);
+        },
+      }),
+    }),
+  )
+  handleupload(@UploadedFile() image: Express.Multer.File) {
+    this.imagepath = image.path;
+    console.log('image', image);
+    console.log('path', image.path);
+    return 'file upload API'+this.imagepath ;
+  }
+  @Get('showimage/:image')
+  seeUploadedFile(@Param('image') image, @Res() res) {
+    return res.sendFile(image, { root: './images' });
+  }
+
+  
 }
+

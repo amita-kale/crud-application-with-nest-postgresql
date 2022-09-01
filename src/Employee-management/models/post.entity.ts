@@ -1,37 +1,48 @@
-import{Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+/* eslint-disable prettier/prettier */
+// eslint-disable-next-line prettier/prettier
 
-export enum department{
-    finance="Finance",
-    software_department="Software development",
-    marketing="Marketing",
-    testing="Testing",
-}
-
+// eslint-disable-next-line prettier/prettier
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn , ManyToMany, JoinTable } from "typeorm";
+// eslint-disable-next-line prettier/prettier
+import {DepartmentPostEntity}  from '../models/department.entity'
 
 @Entity('employee')
-export class FeedPostEntity{
-    @PrimaryGeneratedColumn('uuid')
-         id : number;
-        
-    @Column({ default : '' })
-    EmployeeName: string;
+export class EmpPostEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ default : '' })
-    EmployeeAddress: string;
 
-    
-    @Column({ type:'enum', enum:department, default :null })
-    department:department;
+  @Column({ default: '' , length:50})
+  EmployeeName: string;
 
-    @Column({ type: 'int' , default: null})
-    contact: number;
+  @Column({ default: '' })
+  EmployeeAddress: string;
 
-    @Column({ type: 'int' ,default: null })
-    salary: number;
+  @Column({ type: 'int',unique:true, default: null })
+  contact: number;
 
-    // @Column({type:'timestamp', default:() => 'CURRENT_TIMESTAMP'})
-    //     createdAt : Date;
-    @CreateDateColumn()
-    createdAt: Date;
+  @Column({ type: 'int', default: null })
+  salary: number;
 
+  @ManyToMany(()=>DepartmentPostEntity,(department)=>department)
+  @JoinTable({name : 'employeedepartment'})
+  department:DepartmentPostEntity[];
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  // @ManyToMany()
+  
 }
+
+// export enum department {
+//   finance = 'Finance',
+//   softwaredevelopment = 'Softwaredevelopment',
+//   marketing = 'Marketing',
+//   testing = 'Testing',
+// }
+// @Column({ default: '' })
+  // image: string;
+
+  // @Column({ default:''})
+  // email: string;

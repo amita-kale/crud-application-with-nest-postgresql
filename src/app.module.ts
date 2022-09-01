@@ -1,21 +1,38 @@
+
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+// eslint-disable-next-line prettier/prettier
 import { AppController } from './app.controller';
+// eslint-disable-next-line prettier/prettier
 import { AppService } from './app.service';
+// eslint-disable-next-line prettier/prettier
 import { BookModule } from './book/book.module';
+
 import { FeedModule } from './Employee-management/services/employee.module';
 import { PassengerMModule } from './flight-m/passenger-m.module';
+
+
+// eslint-disable-next-line prettier/prettier
+import { EmpModule } from './Employee-management/services/employee.module';
+// eslint-disable-next-line prettier/prettier
+
+
+import { FlightMModule } from './flight-m/flight-m.module';
+// eslint-disable-next-line prettier/prettier
+
 import { ProductModule } from './product/product.module';
-import { StudentModule } from './student/student.module';
-import { UsersModule } from './usermodule/users.module';
+// eslint-disable-next-line prettier/prettier
+import { StudentModule } from './student/student.module'
+import { MulterModule } from '@nestjs/platform-express';
+import { CategoryModule } from './book/category/category.module';
 
 @Module({
   imports: [
     StudentModule,
     PassengerMModule,
     BookModule,
-
+    CategoryModule,
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -27,7 +44,10 @@ import { UsersModule } from './usermodule/users.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    FeedModule,
+
+    // eslint-disable-next-line prettier/prettier
+    MulterModule.register({ dest:'./images' }),
+    EmpModule,
     ProductModule,
     UsersModule,
   ],

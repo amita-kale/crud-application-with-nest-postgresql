@@ -1,40 +1,50 @@
+
+
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { FeedPostEntity } from '../models/post.entity';
-import { FeedPost } from '../models/post.interface';
+import { EmpPostEntity } from '../models/post.entity';
+import { EmpPost } from '../models/post.interface';
 @Injectable()
-export class FeedService {
+export class EmpService {
 
     constructor(
-        @InjectRepository(FeedPostEntity)
-        private readonly feedPostRepository: Repository<FeedPostEntity>
+        @InjectRepository(EmpPostEntity)
+        private readonly empPostRepository: Repository<EmpPostEntity>
     ){}
 
-    createPost(feedPost: FeedPost): Observable<FeedPost>{
-        return from(this.feedPostRepository.save(feedPost));
+    createPost(empPost: EmpPost): Observable<EmpPost>{
+        return from(this.empPostRepository.save(empPost));
     }
 
-    findById(id:number):Observable<FeedPost>{
-        return from(this.feedPostRepository.findOneBy({id}));
+    findAllPosts(): Observable<EmpPost[]>{
+        return from(this.empPostRepository.find());
+    }
+
+    findById(id: number):Observable<EmpPost>{
+        return from(this.empPostRepository.findOneBy({id}));
     }
     //added
-    findPosts(take: number=10, skip:number=0): Observable<FeedPost[]>{
-        return from (this.feedPostRepository.findAndCount({take,skip}).then(([posts]) => {
-            return<FeedPost[]>posts;
-        }), );
+    // findPosts(take=10, skip=0): Observable<EmpPost[]>{
+    //     return from (this.empPostRepository.findAndCount({take,skip}).then(([posts]) => {
+    //         return<EmpPost[]>posts;
+    //     }), );
+    // }
+
+    //somefeilds updation
+    updatedetails(id: number, empPost: EmpPost): Observable<UpdateResult> {
+        return from(this.empPostRepository.update(id, empPost));
+      }
+
+    
+    updatePost(id: number, empPost: EmpPost):Observable<UpdateResult>{
+        return from(this.empPostRepository.update(id,empPost));
     }
 
-    findAllPosts(): Observable<FeedPost[]>{
-        return from(this.feedPostRepository.find());
-    }
 
-    updatePost(id: number, feedPost: FeedPost):Observable<UpdateResult>{
-        return from(this.feedPostRepository.update(id,feedPost));
-    }
 
     deletePost(id: number): Observable<DeleteResult>{
-        return from(this.feedPostRepository.delete(id));
+        return from(this.empPostRepository.delete(id));
     }
 }

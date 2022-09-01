@@ -1,10 +1,14 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('Reference_of_student_subject_table')
-export class StudSubjectEntity {
+@Entity('Ref_stud_sub_table')
+export class StudSubjectRefEntity {
   @PrimaryGeneratedColumn() id: number;
-  //   @Column() student_id: number;
-  //   @Column() subject_id: number;
+  @Column() student: number;
+  @Column() subject: number;
+
+  // @JoinColumn() student: number;
+  // @JoinColumn() subject: number;
+
   // @ManyToOne((type) => StudentPostEntity, (stud) => stud.sub_names)
   // stud: StudentPostEntity;
 }

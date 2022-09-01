@@ -20,6 +20,8 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { PatchValidateModel } from './models/patchvalidate.model';
+import { StudSubjectInterface } from './models/studentsubref.interface';
+import { ValidateStudSubModel } from './models/validatestudsub.model';
 
 @Controller('student')
 export class StudentController {
@@ -31,6 +33,18 @@ export class StudentController {
   ): Observable<StudentPost> {
     // validateStudentModel.student_profile = this.imagepath;
     return this.studentService.createPost(validateStudentModel);
+  }
+
+  @Post('studsub') createsubId(
+    @Body() validateStudSubModel: ValidateStudSubModel,
+  ): Observable<StudSubjectInterface> {
+    // validateStudentModel.student_profile = this.imagepath;
+    console.log(validateStudSubModel);
+    return this.studentService.subIdcreate(validateStudSubModel);
+  }
+
+  @Get('/studsub') findAllId(): Observable<StudSubjectInterface[]> {
+    return this.studentService.findAllStudSubId();
   }
 
   // @Post('image')

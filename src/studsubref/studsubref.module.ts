@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { StudSubjectEntity } from 'src/student/models/student-subref.entity';
 
-@Module({ imports: [TypeOrmModule.forFeature([StudSubjectEntity])] })
+import { StudSubjectRefEntity } from 'src/student/models/student-subref.entity';
+
+@Module({
+  imports: [TypeOrmModule.forFeature([StudSubjectRefEntity])],
+})
 export class StudsubrefModule {}

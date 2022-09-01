@@ -23,7 +23,25 @@ export class StudentPostEntity {
   // sub_names: StudSubjectEntity[];
   // @Column() student_profile: string;
 
-  @ManyToMany(() => StudSubjectEntity, (sub) => sub.studs)
-  @JoinTable({ name: 'Reference_of_student_subject_table' })
-  sub_names: StudSubjectEntity[];
+  @ManyToMany(
+    () => StudSubjectEntity,
+    (subject: StudSubjectEntity) => subject.student,
+  )
+  // @JoinTable({ name: 'Reference_of_student_subject_table' })
+  @JoinTable({
+    name: 'Ref_stud_sub_table', // table name for the junction table of this relation
+    // @Column()
+    // id:number,
+    joinColumn: {
+      name: 'student',
+      referencedColumnName: 'student_id',
+      foreignKeyConstraintName: 'student',
+    },
+    inverseJoinColumn: {
+      name: 'subject',
+      referencedColumnName: 'subject_id',
+      foreignKeyConstraintName: 'subject',
+    },
+  })
+  subject: StudSubjectEntity[];
 }

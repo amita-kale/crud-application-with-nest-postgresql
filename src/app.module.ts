@@ -26,9 +26,17 @@ import { SubjectModule } from './subject/subject.module';
 import { CategoryModule } from './book/category/category.module';
 import { StudsubrefModule } from './studsubref/studsubref.module';
 import { UsersModule } from './usermodule/users.module';
+
+import { BookCategoryEntity } from './book/category/category.entity';
+import { BookCatEntity } from './book/category/category_book/bookcat.entity';
+import { BookEntitys } from './book/models/book.entity';
+// import { BookCategoryEntity } from './book/category/category.entity';
+// import { BookCatEntity } from './book/category/category_book/bookcat.entity';
+
 import { StudentPostEntity } from './student/models/post.entity';
 import { StudSubjectEntity } from './student/models/subject.entity';
 import { StudSubjectRefEntity } from './student/models/student-subref.entity';
+
 
 @Module({
   imports: [
@@ -45,8 +53,10 @@ import { StudSubjectRefEntity } from './student/models/student-subref.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       autoLoadEntities: false,
-      entities: [StudentPostEntity, StudSubjectEntity, StudSubjectRefEntity],
+
       synchronize: false,
+      entities: [BookCategoryEntity,BookCatEntity,BookEntitys,StudentPostEntity,StudSubjectEntity,StudSubjectRefEntity]
+
     }),
 
     // eslint-disable-next-line prettier/prettier

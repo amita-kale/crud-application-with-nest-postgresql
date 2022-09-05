@@ -2,7 +2,7 @@
 import {  IsInt, IsNotEmpty,  IsString, MaxLength, MinLength } from 'class-validator';
 import { JoinColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { BookCategoryEntity } from '../category/category.entity';
-import { BookEntity } from './book.entity';
+import { BookEntitys } from './book.entity';
 
 export class BookModel {
   @IsNotEmpty() @IsInt()

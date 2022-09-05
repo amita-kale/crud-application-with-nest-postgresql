@@ -28,6 +28,11 @@ import { SubjectModule } from './subject/subject.module';
 import { CategoryModule } from './book/category/category.module';
 import { StudsubrefModule } from './studsubref/studsubref.module';
 import { UsersModule } from './usermodule/users.module';
+import { BookCategoryEntity } from './book/category/category.entity';
+import { BookCatEntity } from './book/category/category_book/bookcat.entity';
+import { BookEntitys } from './book/models/book.entity';
+// import { BookCategoryEntity } from './book/category/category.entity';
+// import { BookCatEntity } from './book/category/category_book/bookcat.entity';
 
 
 @Module({
@@ -44,8 +49,9 @@ import { UsersModule } from './usermodule/users.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      autoLoadEntities: true,
+      autoLoadEntities: false,
       synchronize: false,
+      entities: [BookCategoryEntity,BookCatEntity,BookEntitys]
 
     }),
 

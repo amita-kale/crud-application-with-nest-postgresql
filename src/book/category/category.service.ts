@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { BookEntity } from '../models/book.entity';
+import { BookEntitys } from '../models/book.entity';
 import { BookCategoryEntity } from './category.entity';
 import { CategoryModel } from './category.model';
 import { PatchCategory } from './category.patch';

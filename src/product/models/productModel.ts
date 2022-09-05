@@ -1,4 +1,3 @@
-
 import {
   IsDate,
   IsEnum,
@@ -11,7 +10,7 @@ import {
   MinLength,
 } from 'class-validator';
 import { Unique } from 'typeorm';
-import { ProductData, ProductSize } from './product.entity';
+import { ProductData,ProductSize } from './product.entity';
 export class CreateUserModel {
   id: number;
   // @IsNumberString()
@@ -22,7 +21,6 @@ export class CreateUserModel {
   @MaxLength(15)
   productName: string;
 
-
   @IsNotEmpty()
   @IsInt()
   price: number;
@@ -31,8 +29,7 @@ export class CreateUserModel {
   @IsEnum(ProductData)
   stock: ProductData;
 
-  @IsNotEmpty()
-  @IsEnum(ProductSize)
-  size: ProductSize;
-
+  //@IsNotEmpty()
+  // @IsEnum(ProductSize)
+  // size: ProductSize;
 }

@@ -28,6 +28,9 @@ import { SubjectModule } from './subject/subject.module';
 import { CategoryModule } from './book/category/category.module';
 import { StudsubrefModule } from './studsubref/studsubref.module';
 import { UsersModule } from './usermodule/users.module';
+import { ProductPostEntity } from './product/models/product.entity';
+import { categories } from './product/models/categories.entity.ts';
+import { ProductPostCategory } from './product/models/product-category.entity';
 
 
 @Module({
@@ -44,8 +47,9 @@ import { UsersModule } from './usermodule/users.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      autoLoadEntities: true,
+      autoLoadEntities: false,
       synchronize: false,
+      entities:[ProductPostEntity,categories,ProductPostCategory]
       
     }),
 
@@ -56,6 +60,7 @@ import { UsersModule } from './usermodule/users.module';
     UsersModule,
     SubjectModule,
     StudsubrefModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -13,12 +13,12 @@ export enum ProductSize {
 @Entity('product_post')
 export class ProductPostEntity {
   @PrimaryGeneratedColumn()
-  id:number;
+  id: number;
 
   @Column({ default: '' })
   productName: string;
 
-  @Column({ type: 'bigint'})
+  @Column({ type: 'bigint' })
   price: number;
 
   @Column({ type: 'enum', enum: ProductData, default: null })
@@ -29,5 +29,6 @@ export class ProductPostEntity {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
-    productCategory: any;
+  productCategory: any;
 }
+

@@ -26,6 +26,9 @@ import { SubjectModule } from './subject/subject.module';
 import { CategoryModule } from './book/category/category.module';
 import { StudsubrefModule } from './studsubref/studsubref.module';
 import { UsersModule } from './usermodule/users.module';
+import { ProductPostEntity } from './product/models/product.entity';
+import { categories } from './product/models/categories.entity.ts';
+import { ProductPostCategory } from './product/models/product-category.entity';
 
 import { BookCategoryEntity } from './book/category/category.entity';
 import { BookCatEntity } from './book/category/category_book/bookcat.entity';
@@ -53,9 +56,9 @@ import { StudSubjectRefEntity } from './student/models/student-subref.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       autoLoadEntities: false,
-
       synchronize: false,
-      entities: [BookCategoryEntity,BookCatEntity,BookEntitys,StudentPostEntity,StudSubjectEntity,StudSubjectRefEntity]
+      entities: [BookCategoryEntity,BookCatEntity,BookEntitys,StudentPostEntity,StudSubjectEntity,StudSubjectRefEntity,ProductPostEntity,categories,ProductPostCategory]
+
 
     }),
 
@@ -66,6 +69,7 @@ import { StudSubjectRefEntity } from './student/models/student-subref.entity';
     UsersModule,
     SubjectModule,
     StudsubrefModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],

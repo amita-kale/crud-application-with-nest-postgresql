@@ -1,6 +1,6 @@
 import {  IsInt, IsNotEmpty,  IsString, MaxLength, MinLength } from 'class-validator';
 import { ManyToMany } from 'typeorm';
-import { BookEntity } from '../models/book.entity';
+import { BookEntitys } from '../models/book.entity';
 import { BookCategoryEntity } from './category.entity';
 
 export class CategoryModel {
@@ -14,8 +14,8 @@ export class CategoryModel {
 
 
 
-    @ManyToMany(()=> BookEntity, 
-    (book:BookEntity)=>book.category)
-    book:BookEntity[];
+    @ManyToMany(()=> BookEntitys, 
+    (book:BookEntitys)=>book.category)
+    book:BookEntitys[];
 
 }

@@ -3,7 +3,7 @@ import { Column,  Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMan
 import { IsNotEmpty, IsString, IsInt} from "class-validator";
 import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { BookCategoryEntity } from "../category.entity";
-import { BookEntity } from "src/book/models/book.entity";
+import { BookEntitys } from "src/book/models/book.entity";
 
 
 

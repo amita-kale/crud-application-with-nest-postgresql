@@ -8,13 +8,11 @@ import { AppService } from './app.service';
 // eslint-disable-next-line prettier/prettier
 import { BookModule } from './book/book.module';
 
-
 import { PassengerMModule } from './flight-m/passenger-m.module';
 
 // eslint-disable-next-line prettier/prettier
 import { EmpModule } from './Employee-management/services/employee.module';
 // eslint-disable-next-line prettier/prettier
-
 
 // eslint-disable-next-line prettier/prettier
 
@@ -31,6 +29,16 @@ import { UsersModule } from './usermodule/users.module';
 import { ProductPostEntity } from './product/models/product.entity';
 import { categories } from './product/models/categories.entity.ts';
 import { ProductPostCategory } from './product/models/product-category.entity';
+
+import { BookCategoryEntity } from './book/category/category.entity';
+import { BookCatEntity } from './book/category/category_book/bookcat.entity';
+import { BookEntitys } from './book/models/book.entity';
+// import { BookCategoryEntity } from './book/category/category.entity';
+// import { BookCatEntity } from './book/category/category_book/bookcat.entity';
+
+import { StudentPostEntity } from './student/models/post.entity';
+import { StudSubjectEntity } from './student/models/subject.entity';
+import { StudSubjectRefEntity } from './student/models/student-subref.entity';
 
 
 @Module({
@@ -49,8 +57,9 @@ import { ProductPostCategory } from './product/models/product-category.entity';
       database: process.env.DB_DATABASE,
       autoLoadEntities: false,
       synchronize: false,
-      entities:[ProductPostEntity,categories,ProductPostCategory]
-      
+      entities: [BookCategoryEntity,BookCatEntity,BookEntitys,StudentPostEntity,StudSubjectEntity,StudSubjectRefEntity,ProductPostEntity,categories,ProductPostCategory]
+
+
     }),
 
     // eslint-disable-next-line prettier/prettier

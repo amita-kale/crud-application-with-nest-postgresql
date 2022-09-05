@@ -5,7 +5,7 @@ import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { BookCatEntity } from './category/category_book/bookcat.entity';
 import { BookCatModel } from './category/category_book/bookcat.model';
-import { BookEntity } from './models/book.entity';
+import { BookEntitys } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
@@ -17,8 +17,8 @@ export class BookService {
     // bookCatRepository: any;
     // imagepath: string;
     constructor (
-        @InjectRepository(BookEntity)
-        private readonly bookRepository: Repository<BookEntity>,
+        @InjectRepository(BookEntitys)
+        private readonly bookRepository: Repository<BookEntitys>,
         @InjectRepository(BookCatEntity)
         private readonly bookCatRepository: Repository<BookCatEntity>
     ) {}

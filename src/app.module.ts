@@ -8,13 +8,11 @@ import { AppService } from './app.service';
 // eslint-disable-next-line prettier/prettier
 import { BookModule } from './book/book.module';
 
-
 import { PassengerMModule } from './flight-m/passenger-m.module';
 
 // eslint-disable-next-line prettier/prettier
 import { EmpModule } from './Employee-management/services/employee.module';
 // eslint-disable-next-line prettier/prettier
-
 
 // eslint-disable-next-line prettier/prettier
 
@@ -28,7 +26,9 @@ import { SubjectModule } from './subject/subject.module';
 import { CategoryModule } from './book/category/category.module';
 import { StudsubrefModule } from './studsubref/studsubref.module';
 import { UsersModule } from './usermodule/users.module';
-
+import { StudentPostEntity } from './student/models/post.entity';
+import { StudSubjectEntity } from './student/models/subject.entity';
+import { StudSubjectRefEntity } from './student/models/student-subref.entity';
 
 @Module({
   imports: [
@@ -44,9 +44,9 @@ import { UsersModule } from './usermodule/users.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      autoLoadEntities: true,
+      autoLoadEntities: false,
+      entities: [StudentPostEntity, StudSubjectEntity, StudSubjectRefEntity],
       synchronize: false,
-      
     }),
 
     // eslint-disable-next-line prettier/prettier
